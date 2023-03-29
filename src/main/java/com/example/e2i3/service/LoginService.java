@@ -44,12 +44,13 @@ public class LoginService {
             return 0;
         }
 
-        Member member = memberRepository.findByEmail(memberDTO.getEmail())
-                .orElseThrow();
+        Member member = memberRepository.findByEmail(memberDTO.getEmail()).orElseThrow();
 
         // 로그인 성공
         if (member.getPassword().equals(memberDTO.getPassword())) {
             HttpSession session = request.getSession();
+
+            // FRONTEND에서 success.email같이 사용가능
             session.setAttribute("success", memberDTO);
 
             return 1;

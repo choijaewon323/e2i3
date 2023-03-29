@@ -1,5 +1,6 @@
 package com.example.e2i3.entity;
 
+import com.example.e2i3.dto.MemberDTO;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
@@ -31,5 +32,12 @@ public class Member {
         this.id = id;
         this.email = email;
         this.password = password;
+    }
+
+    public MemberDTO toMemberDTO() {
+        return MemberDTO.builder()
+                .email(email)
+                .password(password)
+                .build();
     }
 }
