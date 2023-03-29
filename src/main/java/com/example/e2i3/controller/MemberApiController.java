@@ -1,6 +1,9 @@
 package com.example.e2i3.controller;
 
 import com.example.e2i3.dto.MemberDTO;
+import com.example.e2i3.service.MemberService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.PutMapping;
 import com.example.e2i3.service.LoginService;
 import com.example.e2i3.service.MemberService;
 import lombok.RequiredArgsConstructor;
@@ -15,6 +18,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class MemberApiController {
     private final MemberService memberService;
+    
+    @PutMapping("/api/member")
+    public void updateMember(MemberDTO memberDTO) {
+        memberService.update(memberDTO);
 
     @DeleteMapping("/api/delete")
     public Integer delete(MemberDTO memberDTO){
