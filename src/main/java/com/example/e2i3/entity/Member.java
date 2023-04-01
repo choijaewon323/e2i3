@@ -37,12 +37,12 @@ public class Member {
     public void update(MemberDTO memberDTO) {
         this.email = memberDTO.getEmail();
         this.password = memberDTO.getPassword();
+    }
 
-    public MemberDTO toMemberDTO() {
+    public MemberDTO toMemberDTO () {
         return MemberDTO.builder()
                 .email(email)
                 .password(password)
                 .build();
-
     }
 }

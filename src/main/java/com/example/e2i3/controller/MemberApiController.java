@@ -22,6 +22,7 @@ public class MemberApiController {
     @PutMapping("/api/member")
     public void updateMember(MemberDTO memberDTO) {
         memberService.update(memberDTO);
+    }
 
     @DeleteMapping("/api/delete")
     public Integer delete(MemberDTO memberDTO){
