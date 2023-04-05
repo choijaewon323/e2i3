@@ -24,7 +24,7 @@ public class MemberApiController {
         memberService.update(memberDTO);
     }
 
-    @DeleteMapping("/api/delete")
+    @DeleteMapping("/api/member")
     public Integer delete(MemberDTO memberDTO){
         return memberService.deleteById(memberDTO);
     }

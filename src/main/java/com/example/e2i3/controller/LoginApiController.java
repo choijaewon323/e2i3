@@ -12,17 +12,17 @@ import org.springframework.web.bind.annotation.RestController;
 public class LoginApiController {
     private final LoginService loginService;
 
-    @PostMapping("/api/login")
+    @PostMapping("/api/login/login")
     public Integer login(MemberDTO memberDTO, HttpServletRequest request) {
         return loginService.login(memberDTO, request);
     }
 
-    @PostMapping("/api/save")
+    @PostMapping("/api/login/save")
     public Integer save(MemberDTO memberDTO) {
         return loginService.register(memberDTO);
     }
 
-    @PostMapping("/api/logout")
+    @PostMapping("/api/login/logout")
     public Integer logout(MemberDTO memberDTO, HttpServletRequest request) {
         return loginService.logout(memberDTO, request);
     }

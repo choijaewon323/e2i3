@@ -8,18 +8,19 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Getter
 @Entity
+@Table(name = "LOVE")
 public class Like {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "LIKE_ID")
+    @Column(name = "LOVE_ID")
     private Long id;
 
-    @Column(name = "BOARD_ID")
     @ManyToOne
+    @JoinColumn(name = "BOARD_ID")
     private Board board;
 
-    @Column(name = "MEMBER_ID")
     @ManyToOne
+    @JoinColumn(name = "MEMBER_ID")
     private Member member;
 
     @Builder

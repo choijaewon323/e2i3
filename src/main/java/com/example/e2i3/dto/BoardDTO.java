@@ -17,20 +17,23 @@ public class BoardDTO {
     private String title;
     private String content;
     private String writer;
+    private Long likeCnt;
 
     @Builder
-    public BoardDTO(Long id, String title, String content, String writer) {
+    public BoardDTO(Long id, String title, String content, String writer, Long likeCnt) {
         this.id = id;
         this.title = title;
         this.content = content;
         this.writer = writer;
+        this.likeCnt = likeCnt;
     }
 
     @Builder
-    public BoardDTO(String title, String content, String writer) {
+    public BoardDTO(String title, String content, String writer, Long likeCnt) {
         this.title = title;
         this.content = content;
         this.writer = writer;
+        this.likeCnt = likeCnt;
     }
 
 
