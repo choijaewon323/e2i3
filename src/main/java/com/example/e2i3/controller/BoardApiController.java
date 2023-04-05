@@ -17,17 +17,17 @@ public class BoardApiController {
     private final BoardService boardService;
 
     // 글 작성
-    @PostMapping("/api/write")
+    @PostMapping("/api/board")
     public Integer write(BoardDTO boardDTO) {
         return boardService.write(boardDTO);
     }
 
-    @DeleteMapping("/api/delete/post")
+    @DeleteMapping("/api/board")
     public Integer delete(BoardDTO boardDTO){
         return boardService.deleteByTitle(boardDTO);
     }
 
-    @PutMapping("/api/board/update")
+    @PutMapping("/api/board")
     public void updateBoard(BoardDTO boardDTO) {
         boardService.update(boardDTO);
     }

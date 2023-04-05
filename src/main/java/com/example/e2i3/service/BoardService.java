@@ -3,12 +3,15 @@ package com.example.e2i3.service;
 import com.example.e2i3.dto.BoardDTO;
 import com.example.e2i3.dto.MemberDTO;
 import com.example.e2i3.entity.Board;
+import com.example.e2i3.entity.Comment;
 import com.example.e2i3.entity.Member;
 import com.example.e2i3.repository.BoardRepository;
+import com.example.e2i3.repository.CommentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 import static org.hibernate.type.SqlTypes.NULL;
@@ -17,6 +20,7 @@ import static org.hibernate.type.SqlTypes.NULL;
 @Service
 public class BoardService {
     private final BoardRepository boardRepository;
+    private final CommentRepository commentRepository;
 
     @Transactional
     public Integer write(BoardDTO boardDTO) {
@@ -33,20 +37,27 @@ public class BoardService {
     @Transactional
     public Integer deleteByTitle(BoardDTO boardDTO) {
         Optional<Board>byBoardTitle = boardRepository.findByTitle(boardDTO.getTitle());
-        if(byBoardTitle.isPresent()){
+
+        if (byBoardTitle.isPresent()) {
             Board board = byBoardTitle.get();
             Long id = board.getId();
             String writer = board.getWriter();
 
             String writer1 = boardDTO.getWriter();
 
-            if(writer.equals(writer1)){
+            if (writer.equals(writer1)) {
+                List<Comment> findComment = commentRepository.findByBoard(board);
+
+                for (Comment comment : findComment) {
+                    commentRepository.deleteById(comment.getId());
+                }
+
                 boardRepository.deleteById(id);
                 return 1;
-            }else{
+            } else {
                 return 0;
             }
-        }else {
+        } else {
             return 0;
         }
     }
