@@ -60,7 +60,7 @@ public class LoginService {
         return 0;
     }
 
-    public Integer logout(MemberDTO memberDTO, HttpServletRequest request) {
+    public Integer logout(HttpServletRequest request) {
         HttpSession session = request.getSession(false);
 
         if (session == null) {
