@@ -54,6 +54,9 @@ public class BoardService {
     @Transactional
     public void update(BoardDTO boardDTO) {
         Board board = boardRepository.findById(boardDTO.getId()).orElseThrow();
+
+        //
+
         board.update(boardDTO);
     }
 }
