@@ -33,6 +33,7 @@ public class MemberService {
 
             String memberPassword = memberEntity.getPassword();
             String memberPassword1 = memberDTO.getPassword();
+
             if(memberPassword.equals(memberPassword1)){
                 //memberRepository.delete(memberEntity);
                 memberRepository.deleteById(id);
@@ -41,7 +42,6 @@ public class MemberService {
             else{
                 return 0;
             }
-
         }
         else{
             return 0;
