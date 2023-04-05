@@ -23,7 +23,7 @@ public class LoginApiController {
     }
 
     @PostMapping("/api/login/logout")
-    public Integer logout(MemberDTO memberDTO, HttpServletRequest request) {
-        return loginService.logout(memberDTO, request);
+    public Integer logout(HttpServletRequest request) {
+        return loginService.logout(request);
     }
 }

@@ -16,11 +16,9 @@ public class Like {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "BOARD_ID")
     private Board board;
 
     @ManyToOne
-    @JoinColumn(name = "MEMBER_ID")
     private Member member;
 
     @Builder
