@@ -9,7 +9,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.NoSuchElementException;
+import java.util.ArrayList;
+import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
@@ -17,29 +18,55 @@ public class CommentService {
     private final CommentRepository commentRepository;
     private final BoardRepository boardRepository;
 
-    @Transactional
-    public void postComment(CommentDTO commentDTO) {
-        Board board = boardRepository.findById(commentDTO.getBoard_id())
+    public List<CommentDTO> getComments(Long boardID) {
+        Board board = boardRepository.findById(boardID)
+                        .orElseThrow();
+        List<Comment> comments = commentRepository.findByBoard(board);
+        List<CommentDTO> results = new ArrayList<>();
+
+        for (Comment comment : comments) {
+            CommentDTO commentDTO = CommentDTO.builder()
+                    .writer(comment.getWriter())
+                    .content(comment.getContent())
+                    .id(comment.getId())
+                    .build();
+            results.add(commentDTO);
+        }
+
+        return results;
+    }
+
+    public CommentDTO getComment(Long commentID) {
+        Comment comment = commentRepository.findById(commentID)
                 .orElseThrow();
+
+        CommentDTO commentDTO = CommentDTO.builder()
+                .id(comment.getId())
+                .content(comment.getContent())
+                .writer(comment.getWriter())
+                .build();
+
+        return commentDTO;
+    }
+
+    @Transactional
+    public void postComment(Long boardID, CommentDTO commentDTO) {
+        Board board = boardRepository.findById(boardID)
+                        .orElseThrow();
 
         commentRepository.save(commentDTO.toEntity(board));
     }
 
     @Transactional
-    public void putComment(CommentDTO commentDTO) {
-        Comment comment = commentRepository.findById(commentDTO.getId())
-                .orElseThrow(() -> new NoSuchElementException("Could not find such comment"));
+    public void putComment(Long commentID, CommentDTO commentDTO) {
+        Comment comment = commentRepository.findById(commentID)
+                        .orElseThrow();
 
-        comment.update(comment.getWriter(), comment.getContent());
+        comment.update(commentDTO.getWriter(), commentDTO.getContent());
     }
 
     @Transactional
-    public void deleteComment(CommentDTO commentDTO) {
-        Comment comment = commentRepository.findById(commentDTO.getId())
-                .orElseThrow(() -> new NoSuchElementException("Could not find such comment"));
-
-        commentRepository.deleteById(comment.getId());
+    public void deleteComment(Long commentID) {
+        commentRepository.deleteById(commentID);
     }
-
-
 }
