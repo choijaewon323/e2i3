@@ -26,8 +26,8 @@ public class Board {
     @Column(name = "WRITER")
     private String writer;
 
-    @Column(name = "LIKECNT")
-    private Long likeCnt = 0L;
+    @Column(name = "HEARTCNT")
+    private Long heartCnt = 0L;
 
     // 생성자
     @Builder
@@ -58,11 +58,11 @@ public class Board {
         this.content = boardDTO.getContent();
     }
 
-    public void updateLike(Boolean isPushed) {
-        if (isPushed == true) {
-            likeCnt++;
+    public void updateHeart(Boolean isPushed) {
+        if (isPushed.equals(true)) {
+            this.heartCnt++;
         } else {
-            likeCnt--;
+            this.heartCnt--;
         }
     }
 }

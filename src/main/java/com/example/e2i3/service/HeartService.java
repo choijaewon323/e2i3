@@ -1,11 +1,10 @@
 package com.example.e2i3.service;
 
-import com.example.e2i3.dto.LikeDTO;
 import com.example.e2i3.entity.Board;
-import com.example.e2i3.entity.Like;
+import com.example.e2i3.entity.Heart;
 import com.example.e2i3.entity.Member;
 import com.example.e2i3.repository.BoardRepository;
-import com.example.e2i3.repository.LikeRepository;
+import com.example.e2i3.repository.HeartRepository;
 import com.example.e2i3.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -15,21 +14,35 @@ import java.util.NoSuchElementException;
 
 @RequiredArgsConstructor
 @Service
-public class LikeService {
-    private final LikeRepository likeRepository;
+public class HeartService {
+    private final HeartRepository heartRepository;
     private final BoardRepository boardRepository;
     private final MemberRepository memberRepository;
 
+    public Integer getHeart(Long boardID, String email) {
+        Board board = boardRepository.findById(boardID)
+                .orElseThrow();
+        Member member = memberRepository.findByEmail(email)
+                .orElseThrow();
+        Boolean isPushed = heartRepository.findByBoardAndMember(board, member).isPresent();
+
+        if (isPushed.equals(true)) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+
     @Transactional
-    public Integer pushLike(LikeDTO likeDTO) {
+    public Integer pushHeart(Long boardID, String email) {
         Member findMember;
         Board findBoard;
 
         try {
-            findMember = memberRepository.findById(likeDTO.getMemberID())
+            findMember = memberRepository.findByEmail(email)
                     .orElseThrow(() -> new NoSuchElementException("Could not find such member"));
 
-            findBoard = boardRepository.findById(likeDTO.getBoardID())
+            findBoard = boardRepository.findById(boardID)
                     .orElseThrow(() -> new NoSuchElementException("Could not find such board"));
 
         } catch (Exception e) {
@@ -38,47 +51,47 @@ public class LikeService {
             return 0;
         }
 
-        Boolean present = likeRepository.findByBoardAndMember(findBoard, findMember).isPresent();
+        Boolean present = heartRepository.findByBoardAndMember(findBoard, findMember).isPresent();
 
         // 이미 Like 엔티티가 존재 -> 이미 좋아요가 눌러진것
         if (present == true) {
             return 0;
         }
 
-        Like like = Like.builder()
+        Heart heart = Heart.builder()
                 .board(findBoard)
                 .member(findMember)
                 .build();
 
-        likeRepository.save(like);
-        findBoard.updateLike(true);
+        heartRepository.save(heart);
+        findBoard.updateHeart(true);
         return 1;
     }
 
     @Transactional
-    public Integer popLike(LikeDTO likeDTO) {
+    public Integer popHeart(Long boardID, String email) {
         Board findBoard;
         Member findMember;
-        Like like;
+        Heart heart;
 
         try {
-            findMember = memberRepository.findById(likeDTO.getMemberID())
+            findMember = memberRepository.findByEmail(email)
                     .orElseThrow(() -> new NoSuchElementException("Could not find such member"));
 
-            findBoard = boardRepository.findById(likeDTO.getBoardID())
+            findBoard = boardRepository.findById(boardID)
                     .orElseThrow(() -> new NoSuchElementException("Could not find such board"));
 
-            like = likeRepository.findByBoardAndMember(findBoard, findMember)
+            heart = heartRepository.findByBoardAndMember(findBoard, findMember)
                     .orElseThrow(() -> new NoSuchElementException("Like does not pushed"));
+
         } catch (Exception e) {
             e.printStackTrace();
 
             return 0;
         }
 
-        likeRepository.deleteById(like.getId());
-
-        findBoard.updateLike(false);
+        heartRepository.deleteById(heart.getId());
+        findBoard.updateHeart(false);
 
         return 1;
     }
