@@ -1,11 +1,15 @@
 package com.example.e2i3.service;
 
 import com.example.e2i3.dto.MemberDTO;
+import com.example.e2i3.entity.Like;
 import com.example.e2i3.entity.Member;
+import com.example.e2i3.repository.LikeRepository;
 import com.example.e2i3.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 import java.util.Optional;
 
 
@@ -13,6 +17,8 @@ import java.util.Optional;
 @Service
 public class MemberService {
     private final MemberRepository memberRepository;
+    private final LikeRepository likeRepository;
+
 
     @Transactional
     public void update(MemberDTO memberDTO) {
@@ -36,7 +42,15 @@ public class MemberService {
 
             if(memberPassword.equals(memberPassword1)){
                 //memberRepository.delete(memberEntity);
+
+                List<Like> byMember = likeRepository.findByMember(memberEntity);
+                for(Like like : byMember){
+                    like.getBoard().updateLike(false);
+                    likeRepository.deleteById(like.getId());
+                }
+
                 memberRepository.deleteById(id);
+
                 return 1;
             }
             else{

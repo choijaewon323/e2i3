@@ -8,6 +8,7 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 public class LikeDTO {
+
     private Long boardID;
     private Long memberID;
 
