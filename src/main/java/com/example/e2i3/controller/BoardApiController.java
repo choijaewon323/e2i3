@@ -21,29 +21,20 @@ public class BoardApiController {
         return boardService.write(boardDTO);
     }
 
-    @DeleteMapping("/api/board")
-    public Integer delete(BoardDTO boardDTO){
-        return boardService.deleteByTitle(boardDTO);
+    @DeleteMapping("/api/board/{id}")
+    public Integer delete(@PathVariable Long id){
+        return boardService.deleteById(id);
     }
 
-    @PutMapping("/api/board")
-    public void updateBoard(BoardDTO boardDTO) {
-        boardService.update(boardDTO);
+    @PutMapping("/api/board/{id}")
+    public void updateBoard(@PathVariable Long id) {
+        boardService.update(id);
     }
 
-    // 2023 04 25
-    // board detail 1
-    @GetMapping("/api/board/detail")
-    public BoardDTO detail(BoardDTO boardDTO){
-        return boardService.detail(boardDTO);
-        // 게시글 상세보기, 객체를 return 하도록함.
-    }
-    // board detail 2
-    // board의 id
+
     @GetMapping("/api/board/detail/{id}")
     public BoardDTO detail2(@PathVariable Long id){
         return boardService.findById(id);
-        // 게시글 상세보기, 객체를 return 하도록함.
     }
 
 

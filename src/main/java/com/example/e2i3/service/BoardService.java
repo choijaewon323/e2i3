@@ -47,45 +47,40 @@ public class BoardService {
     }
 
     @Transactional
-    public Integer deleteByTitle(BoardDTO boardDTO) {
-        Optional<Board>byBoardTitle = boardRepository.findByTitle(boardDTO.getTitle());
+    public Integer deleteById(Long id) {
+        Optional<Board> byId = boardRepository.findById(id);
 
-        if (byBoardTitle.isPresent()) {
-            Board board = byBoardTitle.get();
-            Long id = board.getId();
-            String writer = board.getWriter();
+        if(byId.isPresent()){
+            Board board = byId.get();
 
-            String writer1 = boardDTO.getWriter();
-
-            if (writer.equals(writer1)) {
-                List<Comment> findComment = commentRepository.findByBoard(board);
-                for (Comment comment : findComment) {
-                    commentRepository.deleteById(comment.getId());
-                }
-
-                // 04 27
-                List<Like> byBoard = likeRepository.findByBoard(board);
-                for(Like like : byBoard){
-                    likeRepository.deleteById(like.getId());
-                }
-
-                boardRepository.deleteById(id);
-                return 1;
-            } else {
-                return 0;
+            // comment 지우기
+            List<Comment> findComment = commentRepository.findByBoard(board);
+            for (Comment comment : findComment) {
+                commentRepository.deleteById(comment.getId());
             }
-        } else {
+
+            // like 지우기
+            List<Like> byBoard = likeRepository.findByBoard(board);
+            for(Like like : byBoard){
+                likeRepository.deleteById(like.getId());
+            }
+
+            // board 삭제
+            boardRepository.deleteById(id);
+            return 1;
+        }else{
             return 0;
         }
     }
 
     @Transactional
-    public void update(BoardDTO boardDTO) {
+    public void update(Long id) {
         // 본인만 수정 예외처리
 
-        Board board = boardRepository.findById(boardDTO.getId()).orElseThrow();
+        Board board = boardRepository.findById(id).orElseThrow();
 
-        board.update(boardDTO);
+        Optional<Board> byId = boardRepository.findById(id);
+        board.update(byId.get().toBoardDTO());
     }
 
 
@@ -129,6 +124,7 @@ public class BoardService {
 
         return boardDTOList;
     }
+
 
 
 }
