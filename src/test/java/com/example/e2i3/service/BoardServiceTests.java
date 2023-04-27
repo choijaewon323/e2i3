@@ -6,7 +6,7 @@ import com.example.e2i3.controller.LikeApiController;
 import com.example.e2i3.controller.LoginApiController;
 import com.example.e2i3.controller.MemberApiController;
 import com.example.e2i3.dto.BoardDTO;
-import com.example.e2i3.dto.LikeDTO;
+import com.example.e2i3.dto.HeartDTO;
 import com.example.e2i3.dto.MemberDTO;
 import com.example.e2i3.entity.Board;
 import com.example.e2i3.entity.Like;
@@ -14,13 +14,9 @@ import com.example.e2i3.entity.Member;
 import com.example.e2i3.repository.BoardRepository;
 import com.example.e2i3.repository.LikeRepository;
 import com.example.e2i3.repository.MemberRepository;
-import com.example.e2i3.service.BoardService;
-import jakarta.servlet.http.HttpServletRequest;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.mock.web.MockHttpSession;
-import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.List;
 
@@ -98,7 +94,7 @@ class BoardServiceTests {
         Board board = boardRepository.findAll().get(0);
         Member member = memberRepository.findAll().get(0);
 
-        LikeDTO likeDTO = new LikeDTO(board.getId(),member.getId());
+        HeartDTO likeDTO = new HeartDTO(board.getId(),member.getId());
         likeApiController.pushLike(likeDTO);
 
         System.out.println(boardRepository.findAll().get(0).getLikeCnt());

@@ -7,11 +7,11 @@ import lombok.Setter;
 @Setter
 @Getter
 @NoArgsConstructor
-public class LikeDTO {
+public class HeartDTO {
     private Long boardID;
     private Long memberID;
 
-    public LikeDTO(Long boardID, Long memberID) {
+    public HeartDTO(Long boardID, Long memberID) {
         this.boardID = boardID;
         this.memberID = memberID;
     }
