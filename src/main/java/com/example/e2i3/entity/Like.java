@@ -1,5 +1,7 @@
 package com.example.e2i3.entity;
 
+import com.example.e2i3.dto.BoardDTO;
+import com.example.e2i3.dto.LikeDTO;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
@@ -26,4 +28,5 @@ public class Like {
         this.board = board;
         this.member = member;
     }
+
 }

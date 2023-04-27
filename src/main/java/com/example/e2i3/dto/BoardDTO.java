@@ -2,11 +2,14 @@ package com.example.e2i3.dto;
 
 
 import com.example.e2i3.entity.Board;
+import com.example.e2i3.entity.Comment;
 import com.example.e2i3.entity.Member;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.List;
 
 @Getter
 @Setter
@@ -18,6 +21,10 @@ public class BoardDTO {
     private String content;
     private String writer;
     private Long likeCnt;
+
+    // 04 26
+    //private List<Comment> commentList;
+
 
     @Builder
     public BoardDTO(Long id, String title, String content, String writer, Long likeCnt) {

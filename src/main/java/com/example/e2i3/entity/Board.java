@@ -7,6 +7,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Getter
 @NoArgsConstructor
 @Entity
@@ -28,6 +30,7 @@ public class Board {
 
     @Column(name = "LIKECNT")
     private Long likeCnt = 0L;
+
 
     // 생성자
     @Builder
@@ -52,6 +55,7 @@ public class Board {
                 .writer(writer)
                 .build();
     }
+
 
     public void update(BoardDTO boardDTO){
         this.title = boardDTO.getTitle();
