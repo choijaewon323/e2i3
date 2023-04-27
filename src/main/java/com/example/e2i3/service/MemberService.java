@@ -1,14 +1,12 @@
 package com.example.e2i3.service;
 
-import com.example.e2i3.dto.MemberDTO;
-import com.example.e2i3.entity.Like;
+import com.example.e2i3.entity.Heart;
 import com.example.e2i3.entity.Member;
-import com.example.e2i3.repository.LikeRepository;
+import com.example.e2i3.repository.HeartRepository;
 import com.example.e2i3.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -17,47 +15,29 @@ import java.util.Optional;
 @Service
 public class MemberService {
     private final MemberRepository memberRepository;
-    private final LikeRepository likeRepository;
-
+    private  final HeartRepository heartRepository;
 
     @Transactional
-    public void update(MemberDTO memberDTO) {
-        Member member = memberRepository.findById(memberDTO.getId()).orElseThrow();
+    public void update(Long id) {
+        Member member = memberRepository.findById(id).orElseThrow();
 
-        member.update(memberDTO);
+        member.update(member.toMemberDTO());
     }
 
     // 삭제
     @Transactional
-    public Integer deleteById(MemberDTO memberDTO) {
-        Optional<Member> byMemberEmail = memberRepository.findByEmail(memberDTO.getEmail());
-        if(byMemberEmail.isPresent()){
-            //성공
-            //비밀번호 확인 조건 설정
-            Member memberEntity = byMemberEmail.get();
-            Long id = memberEntity.getId();
-
-            String memberPassword = memberEntity.getPassword();
-            String memberPassword1 = memberDTO.getPassword();
-
-            if(memberPassword.equals(memberPassword1)){
-                //memberRepository.delete(memberEntity);
-
-                List<Like> byMember = likeRepository.findByMember(memberEntity);
-                for(Like like : byMember){
-                    like.getBoard().updateLike(false);
-                    likeRepository.deleteById(like.getId());
-                }
-
-                memberRepository.deleteById(id);
-
-                return 1;
+    public Integer deleteById(Long id) {
+        // 추가 예외처리 필요
+        Optional<Member> byId = memberRepository.findById(id);
+        if(byId.isPresent()){
+            List<Heart> byMember = heartRepository.findByMember(byId.get());
+            for(Heart heart : byMember){
+                heart.getBoard().updateHeart(false);
+                heartRepository.deleteById(heart.getId());
             }
-            else{
-                return 0;
-            }
-        }
-        else{
+            memberRepository.deleteById(id);
+            return 1;
+        }else{
             return 0;
         }
     }

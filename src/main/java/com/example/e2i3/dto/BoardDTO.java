@@ -2,8 +2,6 @@ package com.example.e2i3.dto;
 
 
 import com.example.e2i3.entity.Board;
-import com.example.e2i3.entity.Comment;
-import com.example.e2i3.entity.Member;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
