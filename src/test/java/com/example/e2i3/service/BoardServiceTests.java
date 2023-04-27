@@ -2,17 +2,15 @@ package com.example.e2i3.service;
 
 
 import com.example.e2i3.controller.BoardApiController;
-import com.example.e2i3.controller.LikeApiController;
+import com.example.e2i3.controller.HeartApiController;
 import com.example.e2i3.controller.LoginApiController;
 import com.example.e2i3.controller.MemberApiController;
 import com.example.e2i3.dto.BoardDTO;
-import com.example.e2i3.dto.HeartDTO;
 import com.example.e2i3.dto.MemberDTO;
 import com.example.e2i3.entity.Board;
-import com.example.e2i3.entity.Like;
 import com.example.e2i3.entity.Member;
 import com.example.e2i3.repository.BoardRepository;
-import com.example.e2i3.repository.LikeRepository;
+import com.example.e2i3.repository.HeartRepository;
 import com.example.e2i3.repository.MemberRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +28,8 @@ class BoardServiceTests {
     @Autowired
     LoginApiController loginApiController;
     @Autowired
-    LikeApiController likeApiController;
+    HeartApiController heartApiController;
+
     @Autowired
     BoardService boardService;
 
@@ -39,8 +38,7 @@ class BoardServiceTests {
     @Autowired
     MemberRepository memberRepository;
     @Autowired
-    private LikeRepository likeRepository;
-
+    HeartRepository heartRepository;
 
     @Test
     void boardWrite(){
@@ -94,19 +92,9 @@ class BoardServiceTests {
         Board board = boardRepository.findAll().get(0);
         Member member = memberRepository.findAll().get(0);
 
-        HeartDTO likeDTO = new HeartDTO(board.getId(),member.getId());
-        likeApiController.pushLike(likeDTO);
+        heartApiController.pushHeart(board.getId(),member.getEmail());
 
-        System.out.println(boardRepository.findAll().get(0).getLikeCnt());
-        //System.out.println(likeApiController.pushLike(likeDTO));
-        //likeApiController.popLike(likeDTO);
-        //System.out.println(board.getLikeCnt());
-
-        //board.updateLike(true);
-        //System.out.println(board.getLikeCnt());
-        // true 넣어주면 제대로 동작함 true 가 제대로 안넘어오나
-        //board.updateLike(false);
-        //System.out.println(board.getLikeCnt());
+        System.out.println(boardRepository.findAll().get(0).getHeartCnt());
     }
 
 }

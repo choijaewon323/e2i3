@@ -1,9 +1,9 @@
 package com.example.e2i3.service;
 
 import com.example.e2i3.dto.MemberDTO;
-import com.example.e2i3.entity.Like;
+import com.example.e2i3.entity.Heart;
 import com.example.e2i3.entity.Member;
-import com.example.e2i3.repository.LikeRepository;
+import com.example.e2i3.repository.HeartRepository;
 import com.example.e2i3.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -17,8 +17,7 @@ import java.util.Optional;
 @Service
 public class MemberService {
     private final MemberRepository memberRepository;
-    private final LikeRepository likeRepository;
-
+    private  final HeartRepository heartRepository;
 
     @Transactional
     public void update(MemberDTO memberDTO) {
@@ -43,10 +42,10 @@ public class MemberService {
             if(memberPassword.equals(memberPassword1)){
                 //memberRepository.delete(memberEntity);
 
-                List<Like> byMember = likeRepository.findByMember(memberEntity);
-                for(Like like : byMember){
-                    like.getBoard().updateLike(false);
-                    likeRepository.deleteById(like.getId());
+                List<Heart> byMember = heartRepository.findByMember(memberEntity);
+                for(Heart heart : byMember){
+                    heart.getBoard().updateHeart(false);
+                    heartRepository.deleteById(heart.getId());
                 }
 
                 memberRepository.deleteById(id);

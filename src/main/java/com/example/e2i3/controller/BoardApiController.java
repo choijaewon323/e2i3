@@ -1,12 +1,9 @@
 package com.example.e2i3.controller;
 
 import com.example.e2i3.dto.BoardDTO;
-import com.example.e2i3.entity.Board;
 import com.example.e2i3.service.BoardService;
-import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -42,6 +39,5 @@ public class BoardApiController {
     @GetMapping("/api/board/list")
     public List<BoardDTO> list(){
         return boardService.list();
-        // 객체 list를 return 하도록?
     }
 }

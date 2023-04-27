@@ -3,10 +3,10 @@ package com.example.e2i3.service;
 import com.example.e2i3.dto.BoardDTO;
 import com.example.e2i3.entity.Board;
 import com.example.e2i3.entity.Comment;
-import com.example.e2i3.entity.Like;
+import com.example.e2i3.entity.Heart;
 import com.example.e2i3.repository.BoardRepository;
 import com.example.e2i3.repository.CommentRepository;
-import com.example.e2i3.repository.LikeRepository;
+import com.example.e2i3.repository.HeartRepository;
 import com.example.e2i3.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -21,8 +21,7 @@ import java.util.Optional;
 public class BoardService {
     private final BoardRepository boardRepository;
     private final CommentRepository commentRepository;
-
-    private final LikeRepository likeRepository;
+    private final HeartRepository heartRepository;
     // 04 25
     private final MemberRepository memberRepository;
 
@@ -60,9 +59,9 @@ public class BoardService {
             }
 
             // like 지우기
-            List<Like> byBoard = likeRepository.findByBoard(board);
-            for(Like like : byBoard){
-                likeRepository.deleteById(like.getId());
+            List<Heart> byBoard = heartRepository.findByBoard(board);
+            for(Heart heart : byBoard){
+                heartRepository.deleteById(heart.getId());
             }
 
             // board 삭제
