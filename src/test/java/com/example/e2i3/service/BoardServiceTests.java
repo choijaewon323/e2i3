@@ -54,7 +54,7 @@ class BoardServiceTests {
     }
 
     @Test
-    void boardDetail2(){
+    void boardDetail(){
         BoardDTO boardDTO = BoardDTO.builder().writer("1").title("1").content("1").build();
         boardApiController.write(boardDTO);
 
@@ -63,7 +63,7 @@ class BoardServiceTests {
 
         boardDTO.setId(board.getId());
 
-        BoardDTO boardDTO1 = boardApiController.detail2(boardDTO.getId());
+        BoardDTO boardDTO1 = boardApiController.detail(boardDTO.getId());
         System.out.println(boardDTO1.getContent());
     }
 
@@ -77,7 +77,6 @@ class BoardServiceTests {
         List<BoardDTO> list = boardApiController.list();
         System.out.println(list.get(0).getContent());
         System.out.println(list.get(1).getContent());
-
     }
 
 

@@ -30,7 +30,7 @@ public class BoardApiController {
 
 
     @GetMapping("/api/board/detail/{id}")
-    public BoardDTO detail2(@PathVariable Long id){
+    public BoardDTO detail(@PathVariable Long id){
         return boardService.findById(id);
     }
 
