@@ -60,20 +60,6 @@ class BoardServiceTests {
     }
 
     @Test
-    void boardDetail(){
-        BoardDTO boardDTO = BoardDTO.builder().writer("1").title("1").content("1").build();
-        boardApiController.write(boardDTO);
-
-        Board board = boardRepository.findAll().get(0);
-        // 얘는 아이디 가진다.
-
-        boardDTO.setId(board.getId());
-
-        BoardDTO detail = boardApiController.detail(boardDTO);
-        System.out.println(detail.getContent());
-    }
-
-    @Test
     void boardDetail2(){
         BoardDTO boardDTO = BoardDTO.builder().writer("1").title("1").content("1").build();
         boardApiController.write(boardDTO);
