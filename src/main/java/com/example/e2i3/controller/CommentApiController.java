@@ -3,28 +3,37 @@ package com.example.e2i3.controller;
 import com.example.e2i3.dto.CommentDTO;
 import com.example.e2i3.service.CommentService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
 public class CommentApiController {
     private final CommentService commentService;
 
-    @PostMapping("/api/comment")
-    public void postComment(CommentDTO commentDTO) {
-        commentService.postComment(commentDTO);
+    @GetMapping("/api/comment/{boardID}")
+    public List<CommentDTO> getComments(@PathVariable Long boardID) {
+        return commentService.getComments(boardID);
     }
 
-    @PutMapping("/api/comment")
-    public void putComment(CommentDTO commentDTO) {
-        commentService.putComment(commentDTO);
+    @GetMapping("/api/comment/{commentID}")
+    public CommentDTO getComment(@PathVariable Long commentID) {
+        return commentService.getComment(commentID);
     }
 
-    @DeleteMapping("/api/comment")
-    public void deleteComment(CommentDTO commentDTO) {
-        commentService.deleteComment(commentDTO);
+    @PostMapping("/api/comment/{boardID}")
+    public Integer postComment(@PathVariable Long boardID, CommentDTO commentDTO) {
+        return commentService.postComment(boardID, commentDTO);
+    }
+
+    @PutMapping("/api/comment/{commentID}")
+    public Integer putComment(@PathVariable Long commentID, CommentDTO commentDTO) {
+        return commentService.putComment(commentID, commentDTO);
+    }
+
+    @DeleteMapping("/api/comment/{commentID}")
+    public Integer deleteComment(@PathVariable Long commentID) {
+         return commentService.deleteComment(commentID);
     }
 }

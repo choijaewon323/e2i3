@@ -21,6 +21,7 @@ public class Comment {
     private String content;
 
     @ManyToOne
+    @JoinColumn(name = "BOARD_ID")
     private Board board;
 
     @Builder
