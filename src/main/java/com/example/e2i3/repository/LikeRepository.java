@@ -14,4 +14,6 @@ public interface LikeRepository extends JpaRepository<Like, Long> {
     // 04 26
     List<Like> findByBoard(Board board);
     List<Like> findByMember(Member member);
+    // 이게 들어가야되는데?
+
 }
