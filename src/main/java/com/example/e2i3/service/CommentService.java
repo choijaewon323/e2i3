@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @RequiredArgsConstructor
 @RestController
@@ -50,23 +51,46 @@ public class CommentService {
     }
 
     @Transactional
-    public void postComment(Long boardID, CommentDTO commentDTO) {
-        Board board = boardRepository.findById(boardID)
-                        .orElseThrow();
+    public Integer postComment(Long boardID, CommentDTO commentDTO) {
+        Board board;
+
+        try {
+            board = boardRepository.findById(boardID)
+                    .orElseThrow(() -> new NoSuchElementException("Could not find such board"));
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+
+            return 0;
+        }
 
         commentRepository.save(commentDTO.toEntity(board));
+        return 1;
     }
 
     @Transactional
-    public void putComment(Long commentID, CommentDTO commentDTO) {
-        Comment comment = commentRepository.findById(commentID)
-                        .orElseThrow();
+    public Integer putComment(Long commentID, CommentDTO commentDTO) {
+        Comment comment;
+
+        try {
+            comment = commentRepository.findById(commentID)
+                    .orElseThrow(() -> new NoSuchElementException("Could not find such comment"));
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+
+            return 0;
+        }
 
         comment.update(commentDTO.getWriter(), commentDTO.getContent());
+        return 1;
     }
 
     @Transactional
-    public void deleteComment(Long commentID) {
+    public Integer deleteComment(Long commentID)   {
+        if (commentID == null || commentID.equals("")) {
+            return 0;
+        }
+
         commentRepository.deleteById(commentID);
+        return 1;
     }
 }

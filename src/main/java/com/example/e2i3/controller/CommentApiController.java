@@ -23,17 +23,17 @@ public class CommentApiController {
     }
 
     @PostMapping("/api/comment/{boardID}")
-    public void postComment(@PathVariable Long boardID, CommentDTO commentDTO) {
-        commentService.postComment(boardID, commentDTO);
+    public Integer postComment(@PathVariable Long boardID, CommentDTO commentDTO) {
+        return commentService.postComment(boardID, commentDTO);
     }
 
     @PutMapping("/api/comment/{commentID}")
-    public void putComment(@PathVariable Long commentID, CommentDTO commentDTO) {
-        commentService.putComment(commentID, commentDTO);
+    public Integer putComment(@PathVariable Long commentID, CommentDTO commentDTO) {
+        return commentService.putComment(commentID, commentDTO);
     }
 
     @DeleteMapping("/api/comment/{commentID}")
-    public void deleteComment(@PathVariable Long commentID) {
-        commentService.deleteComment(commentID);
+    public Integer deleteComment(@PathVariable Long commentID) {
+         return commentService.deleteComment(commentID);
     }
 }

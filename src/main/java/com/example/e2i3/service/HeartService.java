@@ -46,8 +46,7 @@ public class HeartService {
                     .orElseThrow(() -> new NoSuchElementException("Could not find such board"));
 
         } catch (Exception e) {
-            e.printStackTrace();
-
+            System.out.println(e.getMessage());
             return 0;
         }
 
@@ -85,8 +84,7 @@ public class HeartService {
                     .orElseThrow(() -> new NoSuchElementException("Like does not pushed"));
 
         } catch (Exception e) {
-            e.printStackTrace();
-
+            System.out.println(e.getMessage());
             return 0;
         }
 
