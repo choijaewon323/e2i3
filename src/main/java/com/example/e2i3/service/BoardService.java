@@ -4,17 +4,13 @@ import com.example.e2i3.dto.BoardDTO;
 import com.example.e2i3.entity.Board;
 import com.example.e2i3.entity.Comment;
 import com.example.e2i3.entity.Like;
-import com.example.e2i3.entity.Member;
 import com.example.e2i3.repository.BoardRepository;
 import com.example.e2i3.repository.CommentRepository;
 import com.example.e2i3.repository.LikeRepository;
 import com.example.e2i3.repository.MemberRepository;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.ArrayList;
 import java.util.List;
