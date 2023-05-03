@@ -16,7 +16,7 @@ import java.util.Optional;
 @Service
 public class MemberService {
     private final MemberRepository memberRepository;
-    private  final HeartRepository heartRepository;
+    private final HeartRepository heartRepository;
 
     @Transactional
     public void update(Long id, MemberDTO memberDTO) {
