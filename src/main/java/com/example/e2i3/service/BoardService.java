@@ -64,13 +64,11 @@ public class BoardService {
     }
 
     @Transactional
-    public void update(Long id) {
+    public void update(Long id, BoardDTO boardDTO) {
         // 본인만 수정 예외처리 필요
 
         Board board = boardRepository.findById(id).orElseThrow();
-
-        Optional<Board> byId = boardRepository.findById(id);
-        board.update(byId.get().toBoardDTO());
+        board.update(boardDTO);
     }
 
     // board detail
