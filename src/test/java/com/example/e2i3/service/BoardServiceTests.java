@@ -17,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
+import java.util.Optional;
 
 @SpringBootTest
 class BoardServiceTests {
@@ -52,7 +53,33 @@ class BoardServiceTests {
             System.out.println("no");
         }
     }
+    @Test
+    void boardDelete(){
+        BoardDTO boardDTO = BoardDTO.builder().writer("1").title("1").content("1").build();
+        boardApiController.write(boardDTO);
 
+        Long id = boardRepository.findAll().get(0).getId();
+        boardApiController.delete(id);
+
+        Optional<Board> byId = boardRepository.findById(id);
+        if(byId.isPresent()){
+            System.out.println("no");
+        }else{
+            System.out.println("yes");
+        }
+    }
+    @Test
+    void boardUpdate(){
+        BoardDTO boardDTO = BoardDTO.builder().writer("1").title("1").content("1").build();
+        boardApiController.write(boardDTO);
+
+        BoardDTO boardDTO2 = BoardDTO.builder().writer("2").title("2").content("2").build();
+        Long id = boardRepository.findAll().get(0).getId();
+        boardApiController.updateBoard(id, boardDTO2);
+
+        Board board = boardRepository.findAll().get(0);
+        System.out.println(board.getContent());
+    }
     @Test
     void boardDetail(){
         BoardDTO boardDTO = BoardDTO.builder().writer("1").title("1").content("1").build();
@@ -66,7 +93,6 @@ class BoardServiceTests {
         BoardDTO boardDTO1 = boardApiController.detail(boardDTO.getId());
         System.out.println(boardDTO1.getContent());
     }
-
     @Test
     void boardList(){
         BoardDTO boardDTO = BoardDTO.builder().writer("1").title("1").content("1").build();
@@ -78,8 +104,6 @@ class BoardServiceTests {
         System.out.println(list.get(0).getContent());
         System.out.println(list.get(1).getContent());
     }
-
-
     @Test
     void showLikeCnt(){
         BoardDTO boardDTO = BoardDTO.builder().writer("1").title("1").content("1").build();
@@ -92,8 +116,6 @@ class BoardServiceTests {
         Member member = memberRepository.findAll().get(0);
 
         heartApiController.pushHeart(board.getId(),member.getEmail());
-
         System.out.println(boardRepository.findAll().get(0).getHeartCnt());
     }
-
 }
