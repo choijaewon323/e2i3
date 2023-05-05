@@ -4,6 +4,7 @@
 ## Skill
 - Back-end : Spring Boot, Spring Security, Spring Data JPA
 - DevOps : MySQL, H2Databases
+- Build : Gradle
 - Deployment : AWS
 
 ## RDB Table
