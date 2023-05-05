@@ -48,3 +48,43 @@ MEMBER
 |------|-----------------------------------|
 |PUT|/api/member/{id}|
 |DELETE|/api/member/{id}|
+
+## Directory
+```directory
+|-- java
+|   |-- controller
+|   |   |-- BoardApiController.java
+|   |   |-- CommentApiController.java
+|   |   |-- HeartApiController.java
+|   |   |-- LoginApiController.java
+|   |   |-- MemberApiController.java
+|   |-- dto
+|   |   |-- BoardDTO.java
+|   |   |-- CommentDTO.java
+|   |   |-- HeartDTO.java
+|   |   |-- MemberDTO.java
+|   |-- entity
+|   |   |-- Board.java
+|   |   |-- Comment.java
+|   |   |-- Heart.java
+|   |   |-- Member.java
+|   |-- repository
+|   |   |-- BoardRepository.java
+|   |   |-- CommentRepository.java
+|   |   |-- HeartRepository.java
+|   |   |-- MemberRepository.java
+|   |-- service
+|   |   |-- BoardService.java
+|   |   |-- CommentService.java
+|   |   |-- HeartService.java
+|   |   |-- LoginService.java
+|   |   |-- MemberService.java
+|   |-- E2i3Application.java
+|-- test
+|   |-- service
+|   |   |-- BoardServiceTests.java
+|   |   |-- CommentServiceTests.java
+|   |   |-- HeartServiceTests.java
+|   |   |-- LoginServiceTests.java
+|   |   |-- MemberServiceTests.java
+```
