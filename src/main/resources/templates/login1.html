@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <link href="/login1.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        log in page
+    </title>
+    <script>
+            function signupcheck(){
+                let email=document.getElementById("email").value
+                let password=document.getElementById("password").value
+            }
+            
+            const sign_innForm = document.getElementById('login1Form');
+
+            sign_innForm.addEventListener('submit', (event) => {
+            event.preventDefault(); 
+
+            const formData = new FormData(sign_innForm);
+            
+            const email = formData.get('email');
+            const  password= formData.get('password');
+            
+            let save=document.getElementById("save");
+
+            save.addEventListener('submit',(event) => {
+                let formData = new FormData(save);
+                let email = formData.get("password");
+                let data={email: email, password: password};
+
+            fetch('http://localhost:8080/api/login/save', {
+                method:'POST',
+                body:JSON.stingify(data),
+                headers: {
+                    'Content-Type':'application/json'                
+                }
+            })
+            .then(response => {
+                alert(email);
+                window.location.href = '/';
+            })
+            .catch(error =>{
+                console.error('네트워크 오류:',error);
+            });
+        })
+        </script>
+</head>
+<body>
+<div class="rectangle">
+    <div class="rectangle1"></div>
+    <a href="/sign_inn" class="gotosignin">Sign In</a>
+    <p class="logo">
+        MAKE
+
+        <br/>
+        CAMPUS LIFE
+
+        <br/>
+        MORE
+
+        <br/>
+        FUN !
+    </p>
+    <img class="talk1" src="talk1.png"/>
+    <img class="talk2" src="talk2.png"/>
+    <div class="line1">
+        <p><input class="password" id="24:174" type="password" placeholder="password" ></p>
+    </div>
+    <div class="line2">
+        <p><input class="email" id="24:175" type="email" placeholder="Email Address"></p>
+    </div>
+    <img class="door" src="door.png"/>
+    <div><input type="button" class="button" id="24:179"  value="alert">
+        <p class="sign-in" id="24:180">sign In</p>
+    </div>
+    <div class="line3"><p class="or">Or Sign In With</p></div>
+    <div class="line4"></div>
+    <form class="flagg">
+        <a href="http://www.google.com" target="_blank"><img input type="button" class="flag" src="미국국기.png" alt="My Image" onclick="location.href='http://www.google.com'"></a>
+        <a href="http://www.google.com" target="_blank"><img input type="button" class="flag" src="중국 국기.png" alt="My Image" onclick="location.href='http://www.google.com'"></a>
+        <a href="http://www.google.com" target="_blank"><img input type="button" class="flag" src="일본국기.png" alt="My Image" onclick="location.href='http://www.google.com'"></a>
+        <a href="http://www.google.com" target="_blank"><img input type="button" class="flag" src="한국국기.png" alt="My Image" onclick="location.href='http://www.google.com'"></a>
+    </form>
+</div>
+<script>
+            console.log(document);
+    
+            function signinFunc(){
+                if(userid.value == "polytech" && userpw.value =="123456") {
+                    window.open('sign_inn.html');
+                    }
+                    else{
+                        alert("Error UserID or Password");
+                    }
+                }   
+        </script>
+</body>
+</html>

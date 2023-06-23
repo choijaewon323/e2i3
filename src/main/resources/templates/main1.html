@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="main1.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/2b654f3992.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script>
+        let select = 0;
+        let disabledIdx = 0;
+
+        function goLeft() {
+            disabledIdx = select;
+            select = (select + 3) % 4;
+            let boxs = document.getElementsByClassName("box0");
+            let selectedBox = boxs[select];
+            let disabledBox = boxs[disabledIdx];
+            selectedBox.style['width'] = "15.7rem";
+            selectedBox.style['height'] = "15.7rem";
+            selectedBox.style['box-shadow'] = "-9px 9px 1px  #706cda, -30px 30px 0 1px rgba(144, 137, 255, 0.8600000143), -30px 30px 0px 3px rgb(255, 255, 255)";
+            selectedBox.style['top'] = "75rem";
+            disabledBox.style['box-shadow'] = "0px 0px 0px";
+            disabledBox.style['width'] = "14rem";
+            disabledBox.style['height'] = "14rem";
+            disabledBox.style['top'] = "77rem";
+        }
+
+        function goRight() {
+            disabledIdx = select;
+            select = (select + 1) % 4;
+            let boxs = document.getElementsByClassName("box0");
+            let selectedBox = boxs[select];
+            let disabledBox = boxs[disabledIdx];
+            selectedBox.style['box-shadow'] = "-9px 9px 1px  #706cda, -30px 30px 0 1px rgba(144, 137, 255, 0.8600000143), -30px 30px 0px 3px rgb(255, 255, 255)";
+            selectedBox.style['width'] = "15.7rem";
+            selectedBox.style['height'] = "15.7rem";
+            selectedBox.style['top'] = "75rem";
+            disabledBox.style['box-shadow'] = "0px 0px 0px";
+            disabledBox.style['width'] = "14rem";
+            disabledBox.style['height'] = "14rem";
+            disabledBox.style['top'] = "77rem";
+        }
+
+        function getPosts() {
+            const url = '#';
+
+            fetch(url)
+                .then(response => response.json()) 
+                .then(data => {
+                    console.log(data); 
+                })
+                .catch(error => {
+                    console.error('오류가 발생했습니다.', error);
+                });
+            }
+        getPosts();
+
+
+
+    </script>
+</head>
+
+<body>
+    <div>
+        <div class="group-3-HDV">
+            <header>
+                <nav>
+                    <ul class="select">
+                        <li><a href="main1.html">HOME</a></li>
+                        <li><a href="main1.html">CLUB</a></li>
+                        <li><a href="main1.html">BOARD</a></li>
+                        <li><a href="main1.html">JOB</a></li>
+                        <li><a href="main1.html">SELL &amp; GIFT</a></li>
+                    </ul>
+                </nav>
+            </header>
+        </div>
+        <div class="ellipse">
+            <img class="ellipse1" src="ellipse-1.png" />
+            <h1>Make Campus Fun</h1>
+            <img class="ellipse2" src="ellipse-2.png" />
+        </div>
+        <div class="emoji">
+            <img class="emoji1" src="main7.png" />
+            <img class="emoji2" src="main8.png" />
+            <img class="emoji3" src="main9.png" />
+            <img class="emoji4" src="main10.png" />
+            <img class="emoji5" src="main11.png" />
+            <img class="emoji6" src="main12.png" />
+            <img class="emoji7" src="main13.png" />
+            <img class="line1" src="-x9U.png" />
+
+        </div>
+        <div class="line2"></div>
+        <div class="dash">
+            <div class="dashboard" getPostList();>
+                <img class="dashboard1" src="group-8.png" />
+                    <div class="write1"></div>
+                <p class="title1">BOARD</p>
+                <img class="dashboard2" src="group-8.png" />
+                <p class="title2">JOB</p>
+                <img class="dashboard3" src="group-8.png" />
+                <p class="title3">SELL & GIFT</p>
+            </div>
+        </div>
+        <div>
+            <img class="triang" src="main6.png" />
+        </div>
+        <div class="write31" th:text="${board1.title}"></div>
+        <div class="write32" th:text="${board2.title}"></div>
+        <div class="write33" th:text="${board3.title}"></div>
+
+        <div th:each="board, iterStat: ${boardList}">
+            <div th:text="${board.title}" th:class="'write' + ${iterStat.index + 1}"></div>
+        </div>
+
+        <a href="main1.html">
+            <div><img class="user" src="account-circle.png" /></div>
+        </a>
+
+
+        <h1 class="h1t">TODAY'S HOT TOPICS</h1>
+        <div>
+            <div class="box">
+                <div class="box1"></div>
+                <p class="item1">1</p></br></p>
+                <div class="box2"></div>
+                <p class="item2">2</p>
+                </p>
+                <div class="box3"></div>
+                <p class="item3">3</p>
+                </p>
+
+            </div>
+        </div>
+
+        <h2>RECRUITMENTS</h2>
+        <a href="main1.html">
+            <div class="box0" id="box6"><img class="swip1" src="main4.png" /></div>
+        </a>
+        <a href="main1.html">
+            <div class="box0" id="box7"><img class="swip2" src="main2.png" /></div>
+        </a>
+        <a href="main1.html">
+            <div class="box0" id="box8"><img class="swip3" src="main14.png" /></div>
+        </a>
+        <a href="main1.html">
+            <div class="box0" id="box9"><img class="swip4" src="main3.png" /></div>
+        </a>
+        <button type="button" onclick="goLeft()" class="box4"><img class="arrowl" src="vector-t7g.png"></button>
+    </div>
+    <button type="button" onclick="goRight()" class="box5"><img class="arrowr" src="vector-t7g.png"></button></div>
+
+    </div>
+</body>
+
+</html>

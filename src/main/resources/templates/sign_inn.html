@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8">
+        <link href="sign_inn.css" rel="stylesheet">
+        <script>
+            function complete(){
+                window.open("login.html");
+            }
+            function signupcheck(){
+                let email=document.getElementById("email").value
+                let pw=document.getElementById("pw").value
+                let name=document.getElementById("name").value
+                let univ=document.getElementById("univ").value
+                let year=document.getElementById("year").value
+                let month=document.getElementById("month").value
+                let date=document.getElementById("date").value
+                let gender=document.getElementById("gender").value
+                let check=true;
+
+            
+            }
+
+            const sign_innForm = document.getElementById('sign_innForm');
+
+            sign_innForm.addEventListener('submit', (event) => {
+            event.preventDefault(); 
+
+            const formData = new FormData(sign_innForm);
+            
+            const email = formData.get('email');
+            const pw = formData.get('pw');
+            const name = formData.get('name');
+            const univ = formData.get('univ');
+            const year = formData.get('year');
+            const month = formData.get('month');
+            const date = formData.get('date');
+            const gender= formData.get('gender');
+            
+            
+            fetch('/sign_inn', {
+                method: 'POST',
+                body: JSON.stringify({ email, pw, name, univ,year, month, date, gender}),
+                headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                
+                if (data.success) {
+                
+                } else {
+                
+                }
+            })
+            .catch(error => {
+                
+            });
+            });
+
+        </script>
+        <title>
+            welcome to our web page!
+        </title>
+    </head>
+    <body>
+        <div class="desktop-5-u19" id="8:437">
+            <div class="auto-group-grb9-LcF" id="Y7jfW9HqkZv3GYBPEggrb9">
+                <div type="text" placeholder="Enter your Email Address" class="auto-rectangle-group" id="8:422">
+                    <div><input type="text" placeholder="Enter your Email Address" class="rectangle-18"></div>              
+                    <div><input placeholder="Enter Password" class="rectangle-19-yps" id="8:448" type="password"></div>
+                    <div><input placeholder="Name" class="rectangle-20-VHR" id="8:441" type="text"></div>
+                    <div class="auto-group-jpyd-deX" id="Y7jgXCRmwv72wFPCmTjpyD">
+                        <div><input type="text" placeholder="YY" class="rectangle-21-aJs" id="8:445"></div>
+                        <div><input type="text" placeholder="MM" class="rectangle-22-uc3" id="8:446"></div>
+                        <div><input type="text" placeholder="DD" class="rectangle-23-e3q" id="8:447"></div>
+                    </div>
+                    <div><select class="rectangle-24-Zgb" id="8:442" value="Select Gender">
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </div>
+                    <div><input type="text" placeholder="University" class="rectangle-25-Hcb" id="8:443"></div>
+                    <div><input class="rectangle-26-EGw" id="8:444" type="button"></div>
+                </div>
+                <p class="email-MJP" id="8:450">Email</p>
+                <p class="enter-your-email-address-WHm" id="8:455"></p>
+                <p class="password-3h1" id="8:451">Password</p>
+                
+                <p class="name-Lw1" id="8:452" >Name<p></p>
+                <p class="birth-G3y" id="8:453">Birth</p>
+                <p class="gender-Nsh" id="8:454">Gender</p>
+                <p class="name-of-university-4kX" id="8:455">Name of University</p>
+                <p><input class="sign-up-tDm" id="8:457" type="button" value="Sign up"></p>
+                <div class="auto-group-p5yh-QC7" id="Y7jfn3zzxDRRbPjCZcP5yh"></div>                
+            </div>
+            <p class="welcome-6pw" id="8:461">WELCOME</p>
+        </div>
+    </body>
+</html>
+<style>
+    
+    .sign-up-tDm{
+        background-color:  #642af0;
+        border: none;
+        color: white;
+        padding: 15px 30px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 70px;
+        margin: 4px 2px;
+        cursor:pointer;
+        outline: none;
+        border: none;
+        background: transparent;
+    }
+    .rectangle-26-EGw{
+        cursor: pointer;
+        outline: none;
+        border: none;
+        background: transparent;
+    }
+    
+    .rectangle-18{
+        color: black;
+        font-size:70px;
+        font-family: Inter, 'Source Sans Pro';
+        outline: none;
+        border: none;
+        background: transparent;
+        padding-left: 40px;
+    
+    }
+    input::placeholder{
+        color:#c6c6c6
+    }
+    .rectangle-19-yps{
+        color: black;
+        font-size:70px;
+        font-family: Inter, 'Source Sans Pro';
+        outline: none;
+        border: none;
+        background: transparent;
+        padding-left: 40px;
+    }
+
+    .rectangle-20-VHR{
+        color: black;
+        font-size:70px;
+        font-family: Inter, 'Source Sans Pro';
+        outline: none;
+        border: none;
+        background: transparent;
+        padding-left: 40px;
+    }
+    .rectangle-21-aJs{
+        outline: none;
+        border: none;
+        background: transparent;
+        color: black;
+        font-size:70px;
+        font-family: Inter, 'Source Sans Pro';
+        text-align: center;
+    }
+    .rectangle-22-uc3{
+        outline: none;
+        border: none;
+        background: transparent;
+        color: black;
+        font-size:70px;
+        font-family: Inter, 'Source Sans Pro';
+
+        text-align: center;
+    }
+    .rectangle-23-e3q{
+        outline: none;
+        border: none;
+        background: transparent;
+        color: black;
+        font-size:70px;
+        font-family: Inter, 'Source Sans Pro';
+        
+        text-align: center;
+    }
+    
+    .rectangle-24-Zgb{
+        color: black;
+        font-size:70px;
+        font-family: Inter, 'Source Sans Pro';
+        outline: none;
+        border: none;
+        background: transparent;
+        padding-left: 40px;
+        
+    }
+    .rectangle-25-Hcb{
+        outline: none;
+        border: none;
+        background: transparent;
+        color: black;
+        font-size:70px;
+        font-family: Inter, 'Source Sans Pro';
+        padding-left: 40px;
+    }
+    .rectangle-26-EGw {
+        background-color: #642af0;
+        border-radius: 4.1rem;
+        height: 13.1rem;
+        margin-left: 1rem;
+        width: calc(100% - 1rem);
+    }
+    
+
+</style>
+<script>
+
+
+</script>
+

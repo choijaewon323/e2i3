@@ -1,0 +1,179 @@
+@charset "UTF-8";
+body{
+    overflow: hidden;
+}
+.rectangle{
+    background: conic-gradient(from 80.82deg at 40% 52%, rgba(145, 137, 255, 0.93) 0deg, rgba(181, 86, 255, 0.79) 120deg, rgba(154, 147, 255, 0.39) 202.5deg, rgba(244, 212, 25, 0.17) 240deg, rgba(145, 137, 255, 0.93) 360deg);
+    border-radius: 4rem;
+    box-shadow: 0 0.4rem 4.9rem rgba(0, 0, 0, 0.25);
+    height: 25rem;
+    left: 10rem;
+    position: absolute;
+    top: 5rem;
+    width: 50rem;
+}
+.rectangle1{
+    background-color: #ffffff;
+    border: solid 2px #ffffff;
+    border-radius: 4rem;;
+    box-sizing: border-box;
+    height: 25rem;
+    overflow:hidden;
+    position: relative;
+    width:38rem;
+    left: 12rem;
+}
+.gotosignin{
+    position: absolute;
+    font-size: 15px;
+    top: 2rem;
+    left: 42rem;
+    font-weight: 700;
+    color: #642af0;
+    text-decoration: none;
+
+
+}
+.logo{
+    color: #ffffff;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 2.3rem;
+    font-weight: 700;
+    height: 7rem;
+    left: 1.9rem;
+    position:relative;
+    top: -23rem;
+    width: 6rem;
+    font-style:italic;
+    text-shadow:0 1rem 1rem #afafaf;
+    transition: all 0.5s linear;
+}
+.logo:hover {
+    transform: translate(20px);
+}
+.talk1{
+    position: absolute;
+    block-size: 9rem;
+    top: 16rem;
+    left: -7rem;
+}
+.talk2{
+    position: absolute;
+    block-size: 9rem;
+    top: -3rem;
+    left: 4rem;
+}
+.line1{
+    background-color: #000000;
+    height: 0.1rem;
+    left: 17rem;
+    position: absolute;
+    top: 10rem;
+    width: 29rem;
+}
+.line2{
+    background-color: #000000;
+    height: 0.1rem;
+    left: 17rem;
+    position: absolute;
+    top: 13.2rem;
+    width: 29rem;
+}
+.password{
+    font-family: inter,'Source Sans Pro';
+    border-color: #ffffff;
+    border-style: dashed;
+    font-size: 0.8rem;
+    font-weight: 400;
+    height: 1rem;
+    left: 0rem;
+    line-height: 0.2;
+    position: absolute;
+    top: 1.5rem;
+    white-space: nowrap;
+    width: 20rem;
+    outline: none;
+    border: none;
+    background: transparent;
+}
+.email{
+    color: #000000;
+    border-color: #ffffff;
+    border-style:dashed;
+    font-family: Inter, 'Source Sans Pro';
+    font-size: 0.8rem;
+    font-weight: 400;
+    height: 1rem;
+    left: 0rem;
+    line-height: 0.9;
+    position: absolute;
+    top: -4.9rem;
+    white-space: nowrap;
+    width: 20rem;
+    outline: none;
+    border: none;
+    background: transparent;
+}
+.door{
+    block-size: 1.9rem;
+    position: relative;
+    top: -31rem;
+    left: 16.8rem;
+}
+.button{
+    background-color: #642af0;
+    border-radius: 1rem;
+    height: 2.7rem;
+    left: 17rem;
+    position: absolute;
+    top: 15rem;
+    width: 29rem;
+    border: 1rem solid#642af0;
+}
+.sign-in{
+    color: #ffffff;
+    background-color: #642af0;
+    font-family: Inter, 'Source Sans Pro';
+    font-size: 1.4rem;
+    font-weight: 700;
+    height: 2rem;
+    left: 19rem;
+    line-height: 1.2125;
+    position:absolute;
+    top: 13.9rem;
+    white-space: nowrap;
+    width: 8rem;
+    cursor: pointer;
+    padding-left: 10rem ;
+    padding-right: 8.7rem;
+    
+}
+.line3{
+    position:absolute;
+    width: 9rem;
+    height: 0.1rem;
+    top: 20rem;
+    left: 17.2rem;
+    background-color: #000000;
+}
+.or{
+    position: relative;
+    left: 10.8rem;
+    top: -2rem;
+}
+.line4{
+    position:absolute;
+    width: 9rem;
+    height: 0.1rem;
+    top: 20rem;
+    left: 37rem;
+    background-color: #000000;
+}
+.flag{
+    position: relative;
+    block-size: 1rem;
+    top: -18.4rem;
+    left: 23rem;
+    padding: 1.1rem;
+
+}
