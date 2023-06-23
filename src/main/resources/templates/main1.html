@@ -8,59 +8,6 @@
     <script src="https://kit.fontawesome.com/2b654f3992.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-    <script>
-        let select = 0;
-        let disabledIdx = 0;
-
-        function goLeft() {
-            disabledIdx = select;
-            select = (select + 3) % 4;
-            let boxs = document.getElementsByClassName("box0");
-            let selectedBox = boxs[select];
-            let disabledBox = boxs[disabledIdx];
-            selectedBox.style['width'] = "15.7rem";
-            selectedBox.style['height'] = "15.7rem";
-            selectedBox.style['box-shadow'] = "-9px 9px 1px  #706cda, -30px 30px 0 1px rgba(144, 137, 255, 0.8600000143), -30px 30px 0px 3px rgb(255, 255, 255)";
-            selectedBox.style['top'] = "75rem";
-            disabledBox.style['box-shadow'] = "0px 0px 0px";
-            disabledBox.style['width'] = "14rem";
-            disabledBox.style['height'] = "14rem";
-            disabledBox.style['top'] = "77rem";
-        }
-
-        function goRight() {
-            disabledIdx = select;
-            select = (select + 1) % 4;
-            let boxs = document.getElementsByClassName("box0");
-            let selectedBox = boxs[select];
-            let disabledBox = boxs[disabledIdx];
-            selectedBox.style['box-shadow'] = "-9px 9px 1px  #706cda, -30px 30px 0 1px rgba(144, 137, 255, 0.8600000143), -30px 30px 0px 3px rgb(255, 255, 255)";
-            selectedBox.style['width'] = "15.7rem";
-            selectedBox.style['height'] = "15.7rem";
-            selectedBox.style['top'] = "75rem";
-            disabledBox.style['box-shadow'] = "0px 0px 0px";
-            disabledBox.style['width'] = "14rem";
-            disabledBox.style['height'] = "14rem";
-            disabledBox.style['top'] = "77rem";
-        }
-
-        function getPosts() {
-            const url = '#';
-
-            fetch(url)
-                .then(response => response.json()) 
-                .then(data => {
-                    console.log(data); 
-                })
-                .catch(error => {
-                    console.error('오류가 발생했습니다.', error);
-                });
-            }
-        getPosts();
-
-
-
-    </script>
 </head>
 
 <body>
@@ -155,6 +102,43 @@
     <button type="button" onclick="goRight()" class="box5"><img class="arrowr" src="vector-t7g.png"></button></div>
 
     </div>
+
+    <script>
+        let select = 0;
+        let disabledIdx = 0;
+
+        function goLeft() {
+            disabledIdx = select;
+            select = (select + 3) % 4;
+            let boxs = document.getElementsByClassName("box0");
+            let selectedBox = boxs[select];
+            let disabledBox = boxs[disabledIdx];
+            selectedBox.style['width'] = "15.7rem";
+            selectedBox.style['height'] = "15.7rem";
+            selectedBox.style['box-shadow'] = "-9px 9px 1px  #706cda, -30px 30px 0 1px rgba(144, 137, 255, 0.8600000143), -30px 30px 0px 3px rgb(255, 255, 255)";
+            selectedBox.style['top'] = "75rem";
+            disabledBox.style['box-shadow'] = "0px 0px 0px";
+            disabledBox.style['width'] = "14rem";
+            disabledBox.style['height'] = "14rem";
+            disabledBox.style['top'] = "77rem";
+        }
+
+        function goRight() {
+            disabledIdx = select;
+            select = (select + 1) % 4;
+            let boxs = document.getElementsByClassName("box0");
+            let selectedBox = boxs[select];
+            let disabledBox = boxs[disabledIdx];
+            selectedBox.style['box-shadow'] = "-9px 9px 1px  #706cda, -30px 30px 0 1px rgba(144, 137, 255, 0.8600000143), -30px 30px 0px 3px rgb(255, 255, 255)";
+            selectedBox.style['width'] = "15.7rem";
+            selectedBox.style['height'] = "15.7rem";
+            selectedBox.style['top'] = "75rem";
+            disabledBox.style['box-shadow'] = "0px 0px 0px";
+            disabledBox.style['width'] = "14rem";
+            disabledBox.style['height'] = "14rem";
+            disabledBox.style['top'] = "77rem";
+        }
+    </script>
 </body>
 
 </html>

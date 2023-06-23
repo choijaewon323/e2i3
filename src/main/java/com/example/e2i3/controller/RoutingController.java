@@ -12,6 +12,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class RoutingController {
     private final BoardService boardService;
 
+    @GetMapping("/")
+    public String getRoot() {
+        return "login1";
+    }
+
     @GetMapping("/login1")
     public String getLogin1() {
         return "login1";

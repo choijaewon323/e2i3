@@ -28,3 +28,4 @@ insert into board(title) values ('제목27');
 insert into board(title) values ('제목28');
 insert into board(title) values ('제목29');
 insert into board(title) values ('제목30');
+insert into MEMBER(EMAIL, PASSWORD) values ('testEmail', '1234');
