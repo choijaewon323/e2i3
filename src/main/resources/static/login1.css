@@ -63,7 +63,7 @@ body{
     top: -3rem;
     left: 4rem;
 }
-.line1{
+.line2{
     background-color: #000000;
     height: 0.1rem;
     left: 17rem;
@@ -71,7 +71,7 @@ body{
     top: 10rem;
     width: 29rem;
 }
-.line2{
+.line1{
     background-color: #000000;
     height: 0.1rem;
     left: 17rem;

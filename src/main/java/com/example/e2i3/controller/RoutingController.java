@@ -1,6 +1,9 @@
 package com.example.e2i3.controller;
 
 import com.example.e2i3.service.BoardService;
+import com.example.e2i3.service.LoginService;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,10 +14,23 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class RoutingController {
     private final BoardService boardService;
+    private final LoginService loginService;
 
     @GetMapping("/")
-    public String getRoot() {
-        return "login1";
+    public String getRoot(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+
+        if (session == null) {
+            return "login1";
+        }
+
+        Object obj = session.getAttribute("success");
+
+        if (obj == null) {
+            return "login1";
+        }
+
+        return "main1";
     }
 
     @GetMapping("/login1")
@@ -23,7 +39,19 @@ public class RoutingController {
     }
 
     @GetMapping("/main1")
-    public String getMain1(Model model) {
+    public String getMain1(Model model, HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+
+        if (session == null) {
+            return "login1";
+        }
+
+        Object obj = session.getAttribute("success");
+
+        if (obj == null) {
+            return "login1";
+        }
+
         model.addAttribute("boardList", boardService.list());
         model.addAttribute("board1", boardService.list().get(0));
         model.addAttribute("board2", boardService.list().get(1));
