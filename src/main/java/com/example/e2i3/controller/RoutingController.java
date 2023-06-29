@@ -64,4 +64,39 @@ public class RoutingController {
     public String getSign_inn() {
         return "sign_inn";
     }
+
+    @GetMapping("/board")
+    public String getBoard() {
+        return "board";
+    }
+
+    @GetMapping("/club")
+    public String getClub() {
+        return "club";
+    }
+
+    @GetMapping("/job")
+    public String getJob() {
+        return "job";
+    }
+
+    @GetMapping("/mkcf")
+    public String getMkcf() {
+        return "mkcf";
+    }
+
+    @GetMapping("/sellgift")
+    public String getSellGift() {
+        return "sellgift";
+    }
+
+    @GetMapping("/watch")
+    public String getWatch() {
+        return "watch";
+    }
+
+    @GetMapping("/write")
+    public String getWrite() {
+        return "write";
+    }
 }

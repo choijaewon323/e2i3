@@ -1,0 +1,129 @@
+.searching{
+    position: absolute;
+    background-color: rgba(154, 147, 255, 0.3799999952);
+    border: solid 7px #ffffff;
+    border-radius: 1rem;
+    color: rgba(0, 0, 0, 0.25);
+    font-family: InaiMathi, 'Source Sans Pro';
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: -0.285rem;
+    width: 945px;
+    height: 79px;
+
+    left: 100px;
+    top: 620px
+}
+
+.view_block{
+    position: absolute;
+    width: 945px;
+    height: 1184px; /* 변경가능 */
+    left: 100px;
+    top: 720px;
+
+    background: rgba(255, 255, 255, 0.42);
+    border: 7px solid #FFFFFF;
+    border-radius: 25px;
+}
+
+.article{
+    background-color: rgba(154, 147, 255, 0.5);
+    border-radius: 1.9rem;
+    overflow: hidden;
+    position: relative;
+    width: 851px;
+    height: 800px;
+
+    left:47px;
+    top: 47px;
+}
+
+.comment{
+    background-color: rgba(154, 147, 255, 0.5);
+    border-radius: 1.9rem;
+    overflow: hidden;
+    position: relative;
+    width: 851px;
+    height: 100px;
+
+    left:47px;
+}
+.comment_details{
+    position: relative;
+    font-family: Bebas Neue, 'Source Sans Pro';
+    color:black;
+    font-size: 90%;
+
+    left: 150px;
+    height: 95px;
+    width: 670px;
+    background-color: rgba(0, 0, 0, 0); /*투명*/
+    
+}
+
+.b_title{
+    color: #ffffff;
+    font-family: Bebas Neue, 'Source Sans Pro';
+    font-size: 90%;
+    font-weight: bold;
+    width: 751px;
+    height: 90px;
+
+    position: relative;
+    top: 100px;
+    left: 50px;
+    
+}
+
+.b_details{
+    position: relative;
+    background-color: rgba(0, 0, 0, 0); /*투명*/
+    width: 751px;
+    height: 600px;
+
+    top: 70px;
+    left:50px;
+
+    font-family: Bebas Neue, 'Source Sans Pro';
+    color:black;
+    font-size: 90%;
+}
+.b_details img{
+    float: right;
+    width: 250px;
+    height: 250px;
+    border: 2px solid white;
+}
+
+.white_line{
+    position: absolute;
+    left: 5.22%;
+    right: 5.53%;
+    top: 17.41%;
+    bottom: 82.5%;
+
+    background: #FFFFFF;
+}
+
+.white_line_col{
+    position: absolute;
+    top: 5.22%;
+    bottom: 5.53%;
+    left: 17.41%;
+    right: 82.5%;
+
+    background: #FFFFFF;
+}
+
+.small_block_list{
+    position: absolute;
+    width: 500px;
+    height: 89px;
+    left : 1075px;
+
+    background: rgba(255, 255, 255, 0.61);
+    border: 5px solid #FFFFFF;
+    box-shadow: 8px 8px 2px #FFFFFF;
+    border-radius: 15px;
+}

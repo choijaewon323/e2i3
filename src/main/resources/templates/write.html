@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>
+            write
+        </title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="cp.css">
+        <link rel="stylesheet" href="write_c.css">
+        <script>
+            function loadImage(event) {
+                var input = event.target;
+                
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                    
+                    reader.onload = function(e) {
+                        var imageElement = document.getElementById('output-image');
+                        imageElement.src = e.target.result;
+                    };
+                    
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+        </script>
+        
+    </head>
+    <body>
+        <!-- 배경 -->
+        <div>
+            <img class="background" src="triangle.png" alt="triangle">
+        </div>
+        <a href="/main1">
+            <div><img class="user" src="account-circle.png"></div>
+        </a>
+        <!-- 하얀선 -->
+        <div>
+            <img class="vector-2-CJX" src="line_1.png" alt="line_1">
+        </div>
+        <div>
+            <img class="vector-3-aCb" src="line_2.png" alt="line_2">
+        </div>
+        <!-- 헤더라인 -->
+        <div>
+            <ul class="row" style="position: fixed;">
+                <li class="menu"><a href="/main1" class="under">HOME</a></li>
+                <li class="menu"><a href="/club" class="under">CLUB</a></li>
+                <li class="menu"><a href="/board" class="under">BOARD</a></li>
+                <li class="menu"><a href="/job" class="under">JOB</a></li>
+                <li class="menu" ><a href="/sellgift" class="under">SELL & GIFT</a></li>
+            </ul>
+        </div>
+
+        <!-- make campus life more fun -->
+        <div class="title" style="position: absolute; left: 152.14px; top: 114.06px;">m</div>
+        <div class="title" style="position: absolute; left: 247.42px; top: 156.06px;">a</div>
+        <div class="title" style="position: absolute; left: 319.04px; top: 130.06px;">k</div>
+        <div class="title" style="position: absolute; left: 396.53px; top: 140.06px;">e</div>
+        <div class="title" style="position: absolute; left: 433.3px; top: 245px;">C</div>
+        <div class="title" style="position: absolute; left: 509.77px; top: 265px;">a</div>
+        <div class="title" style="position: absolute; left: 581.3px; top: 255px;">m</div>
+        <div class="title" style="position: absolute; left: 714.4px; top: 239px;">p</div>
+        <div class="title" style="position: absolute; left: 799.81px; top: 260px;">u</div>
+        <div class="title" style="position: absolute; left: 868.36px; top: 235px;">s</div>
+        <div class="title" style="position: absolute; left: 961.73px; top: 241px;">L</div>
+        <div class="title" style="position: absolute; left: 1029.27px; top: 241px;">i</div>
+        <div class="title" style="position: absolute; left: 1071.97px; top: 241px;">f</div>
+        <div class="title" style="position: absolute; left: 1110.7px; top: 250px;">e</div>
+        <div class="title" style="position: absolute; left: 914.06px; top: 373.06px;">m</div>
+        <div class="title" style="position: absolute; left: 1040.21px; top: 350.06px;">o</div>
+        <div class="title" style="position: absolute; left: 1119.66px; top: 374.06px;">r</div>
+        <div class="title" style="position: absolute; left: 1169.34px; top: 378.06px;">e</div>
+        <div class="title" style="position: absolute; left: 1281.61px; top: 355.06px;">f</div>
+        <div class="title" style="position: absolute; left: 1322.33px; top: 375.06px;">u</div>
+        <div class="title" style="position: absolute; left: 1403.78px; top: 355.06px;">n</div>
+
+        <!-- 선택 버튼 -->
+        <div class="square_btn" OnClick="location.href ='/club'" style="cursor:pointer; position: absolute; width: 145px; height: 48px; left: 127px; top: 672px;">CLUB</div>
+        <div class="click_btn" OnClick="location.href ='/board'" style="cursor:pointer; position: absolute; width: 145px; height: 48px; left: 279px; top: 672px;">BOARD</div>
+        <div class="square_btn" OnClick="location.href ='/job'" style="cursor:pointer; position: absolute; width: 145px; height: 48px; left: 431px; top: 672px;">JOB</div>
+        <div class="square_btn" OnClick="location.href ='/sellgift'" style="cursor:pointer; position: absolute; width: 145px; height: 48px; left: 583px; top: 672px;">SELL & GIFT</div>
+
+        <div class="block_1">
+            <form>
+                <table>            
+                <tr>
+                    <!-- 사진 넣는 곳 -->
+                    <td>
+                        <div class="pict">
+                            <div class="camera">
+                                <label class="file-input-label" for="file-input">파일 선택</label>
+                                <input class="file-input_c" id="file-input" type="file" accept="image/*" onchange="loadImage(event)">       
+                            </div>
+                            <div class="image-container">
+                                <img id="output-image" src="" class="output-image_c">
+                            </div>
+                        </div>
+                    </td>
+                    <!-- 어두운 배경 -->
+                    <td>
+                        <div class="memo">
+                            <!-- 사용자 정보 -->
+                            <div style="position: absolute;  left:50px; top: 50px;">
+                                <img src="account-circle.png" alt="profile" style="height: 45px; width: 45px;">
+                            </div>
+                            <div style="position: absolute; font-size: 25px; left: 107px; top: 58px; font-family: 'Courier New', Courier, monospace;">
+                                닉네임
+                            </div>
+                            <!-- 제목과 내용 -->
+                            <form id="myForm">
+                                <!-- 제목 -->
+                                <input type="text" id="input1" name="input1" placeholder="NAME" class="input1_c">
+                                <br><div class="white_line"></div>
+                                <!-- 내용 -->
+                                <textarea id="input2" placeholder="  Enter detailed information..." class="input2_c"></textarea>
+                                <!-- <input type="text" id="input2" name="input2" placeholder="Enter detailed information..."> -->
+                                <!-- save 버튼 -->
+                                <button type="button" onclick="submitForm()" class="save">Save</button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+                </table>
+            </form>
+        </div>
+        <script>
+            function submitForm() {
+              var form = document.getElementById("myForm");
+              var input1 = document.getElementById("input1").value;
+            //var input2 = document.getElementById("input2").value;
+        
+              // 입력된 값 확인을 위한 출력
+              console.log("첫 번째 입력: " + input1);
+              //console.log("두 번째 입력: " + input2);
+        
+              // 여기에서 폼을 제출하거나 필요한 작업을 수행할 수 있습니다.
+              // form.submit();
+            }
+          </script>
+
+    </body>
+</html>
