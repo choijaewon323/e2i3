@@ -23,7 +23,7 @@ public class RoutingController {
     private final LoginService loginService;
 
     @GetMapping("/")
-    public String getRoot(HttpServletRequest request) {
+    public String getRoot(Model model, HttpServletRequest request) {
         HttpSession session = request.getSession(false);
 
         if (session == null) {
@@ -35,6 +35,25 @@ public class RoutingController {
         if (obj == null) {
             return "login1";
         }
+
+        int limit = -1;
+        List<BoardDTO> list = boardService.list();
+        List<BoardDTO> temp = new ArrayList<>();
+
+        if (list.size() >= 30) {
+            limit = 30;
+        } else {
+            limit = list.size();
+        }
+
+        for (int i = 0; i < limit; i++) {
+            temp.add(list.get(i));
+        }
+
+        model.addAttribute("boardList", temp);
+        model.addAttribute("board1", boardService.list().get(0));
+        model.addAttribute("board2", boardService.list().get(1));
+        model.addAttribute("board3", boardService.list().get(2));
 
         return "main1";
     }
