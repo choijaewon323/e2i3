@@ -16,11 +16,11 @@
             <header>
                 <nav>
                     <ul class="select">
-                        <li><a href="/main1">HOME</a></li>
-                        <li><a href="/main1">CLUB</a></li>
-                        <li><a href="/main1">BOARD</a></li>
-                        <li><a href="/main1">JOB</a></li>
-                        <li><a href="/main1">SELL &amp; GIFT</a></li>
+                        <li><a href="/main">HOME</a></li>
+                        <li><a href="/club">CLUB</a></li>
+                        <li><a href="/board">BOARD</a></li>
+                        <li><a href="/job">JOB</a></li>
+                        <li><a href="/sellgift">SELL &amp; GIFT</a></li>
                     </ul>
                 </nav>
             </header>
@@ -56,15 +56,15 @@
         <div>
             <img class="triang" src="main6.png" />
         </div>
-        <div class="write31" th:text="${board1.title}"></div>
-        <div class="write32" th:text="${board2.title}"></div>
-        <div class="write33" th:text="${board3.title}"></div>
+        <div class="write31" th:text="${board1.title}" th:onclick="|location.href='@{/detail/{boardID}(boardID=${board1.id})}'|"></div>
+        <div class="write32" th:text="${board2.title}" th:onclick="|location.href='@{/detail/{boardID}(boardID=${board2.id})}'|"></div>
+        <div class="write33" th:text="${board3.title}" th:onclick="|location.href='@{/detail/{boardID}(boardID=${board3.id})}'|"></div>
 
         <div th:each="board, iterStat: ${boardList}">
-            <div th:text="${board.title}" th:class="'write' + ${iterStat.index + 1}"></div>
+            <div th:text="${board.title}" th:class="'write' + ${iterStat.index + 1}" th:onclick="|location.href='@{/detail/{boardID}(boardID=${board.id})}'|"></div>
         </div>
 
-        <a href="main1.html">
+        <a href="/main1">
             <div><img class="user" src="account-circle.png" /></div>
         </a>
 
@@ -85,16 +85,16 @@
         </div>
 
         <h2>RECRUITMENTS</h2>
-        <a href="main1.html">
+        <a href="/main">
             <div class="box0" id="box6"><img class="swip1" src="main4.png" /></div>
         </a>
-        <a href="main1.html">
+        <a href="/main">
             <div class="box0" id="box7"><img class="swip2" src="main2.png" /></div>
         </a>
-        <a href="main1.html">
+        <a href="/main">
             <div class="box0" id="box8"><img class="swip3" src="main14.png" /></div>
         </a>
-        <a href="main1.html">
+        <a href="/main">
             <div class="box0" id="box9"><img class="swip4" src="main3.png" /></div>
         </a>
         <button type="button" onclick="goLeft()" class="box4"><img class="arrowl" src="vector-t7g.png"></button>

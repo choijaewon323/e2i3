@@ -5,29 +5,29 @@
             watch
         </title>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="cp.css">
-        <link rel="stylesheet" href="watch_c.css">
+        <link rel="stylesheet" href="/cp.css">
+        <link rel="stylesheet" href="/watch_c.css">
         
     </head>
     <body>
         <!-- 배경 -->
         <div>
-            <img class="background" src="triangle.png" alt="triangle">
+            <img class="background" src="/triangle.png" alt="triangle">
         </div>
-        <a href="/main1">
-            <div><img class="user" src="account-circle.png"></div>
+        <a href="/main">
+            <div><img class="user" src="/account-circle.png"></div>
         </a>
         <!-- 하얀선 -->
         <div>
-            <img class="vector-2-CJX" src="line_1.png" alt="line_1">
+            <img class="vector-2-CJX" src="/line_1.png" alt="line_1">
         </div>
         <div>
-            <img class="vector-3-aCb" src="line_2.png" alt="line_2">
+            <img class="vector-3-aCb" src="/line_2.png" alt="line_2">
         </div>
         <!-- 헤더라인 -->
         <div>
             <ul class="row" style="position: fixed;">
-                <li class="menu"><a href="/main1" class="under">HOME</a></li>
+                <li class="menu"><a href="/main" class="under">HOME</a></li>
                 <li class="menu"><a href="/club" class="under">CLUB</a></li>
                 <li class="menu"><a href="/board" class="under">BOARD</a></li>
                 <li class="menu"><a href="/job" class="under">JOB</a></li>
@@ -68,18 +68,18 @@
                         <div class="view_block">
                             <!-- 사용자 정보 -->
                             <div style="position: absolute;  left:100px; top: 74px; z-index: 1;">
-                                <img src="account-circle.png" alt="profile" style="height: 45px; width: 45px;">
+                                <img src="/account-circle.png" alt="profile" style="height: 45px; width: 45px;">
                             </div>
-                            <div style="position: absolute; font-size: 25px; left: 150px; top: 80px; font-family: 'Courier New', Courier, monospace; z-index: 1;">
-                                닉네임
+                            <div style="position: absolute; font-size: 25px; left: 150px; top: 80px; font-family: 'Courier New', Courier, monospace; z-index: 1;" th:text="${board.writer}">
+
                             </div>
                             <!-- 제목 및 내용 -->
                             <div class="article">
-                                <div class="b_title">NAME</div>
+                                <div class="b_title" th:text="${board.title}"></div>
                                 <div class="white_line"></div>
-                                <div class="b_details"> 
-                                    기획자가 필요해요~~ 
-                                    <img src="camera.png">
+                                <div class="b_details" th:text="${board.content}">
+
+                                    <img src="/camera.png">
                                 </div>
                             </div>
                             <!-- 댓글 -->
@@ -89,17 +89,19 @@
                                         <tr> <!--tr 한줄 마다 댓글 하나-->
                                             <td><!-- 사용자 정보 -->
                                                 <div style="position: absolute;  left:15px; top: 30px; z-index: 1;">
-                                                    <img src="account-circle.png" alt="profile" style="height: 30px; width: 30px;">
+                                                    <img src="/account-circle.png" alt="profile" style="height: 30px; width: 30px;">
                                                 </div>
+                                                <!-- 닉네임 -->
                                                 <div style="position: absolute; font-size: 25px; left: 50px; top: 32px; font-family: 'Courier New', Courier, monospace; z-index: 1;">
-                                                    닉네임
+
                                                 </div>
                                             </td>
                                             <td><!--흰색 세로 선-->
                                                 <div class="white_line_col"></div> 
                                             </td>
-                                            <td><!--댓글 내용-->
-                                                <div class="comment_details"> 인정합니다~ </div>
+                                            <td>
+                                                <!--댓글 내용-->
+                                                <div class="comment_details"></div>
                                             </td>
                                         </tr>                                        
                                     </table>
@@ -111,17 +113,17 @@
                     <td>
                         <div>
                             <ul>
-                                <li><div class="small_block_list" style="top:620px;"></div></li>
-                                <li><div class="small_block_list" style="top:737px;"></div></li>
-                                <li><div class="small_block_list" style="top:854px;"></div></li>
-                                <li><div class="small_block_list" style="top:971px;"></div></li>
-                                <li><div class="small_block_list" style="top:1088px;"></div></li>
-                                <li><div class="small_block_list" style="top:1205px;"></div></li>
-                                <li><div class="small_block_list" style="top:1322px;"></div></li>
-                                <li><div class="small_block_list" style="top:1439px;"></div></li>
-                                <li><div class="small_block_list" style="top:1556px;"></div></li>
-                                <li><div class="small_block_list" style="top:1673px;"></div></li>
-                                <li><div class="small_block_list" style="top:1790px;"></div></li>
+                                <li><div class="small_block_list" style="top:620px;" th:text="${board0.title}" th:onclick="|location.href='@{/detail/{boardID}(boardID=${board0.id})}'|"></div></li>
+                                <li><div class="small_block_list" style="top:737px;" th:text="${board1.title}" th:onclick="|location.href='@{/detail/{boardID}(boardID=${board1.id})}'|"></div></li>
+                                <li><div class="small_block_list" style="top:854px;" th:text="${board2.title}" th:onclick="|location.href='@{/detail/{boardID}(boardID=${board2.id})}'|"></div></li>
+                                <li><div class="small_block_list" style="top:971px;" th:text="${board3.title}" th:onclick="|location.href='@{/detail/{boardID}(boardID=${board3.id})}'|"></div></li>
+                                <li><div class="small_block_list" style="top:1088px;" th:text="${board4.title}" th:onclick="|location.href='@{/detail/{boardID}(boardID=${board4.id})}'|"></div></li>
+                                <li><div class="small_block_list" style="top:1205px;" th:text="${board5.title}" th:onclick="|location.href='@{/detail/{boardID}(boardID=${board5.id})}'|"></div></li>
+                                <li><div class="small_block_list" style="top:1322px;" th:text="${board6.title}" th:onclick="|location.href='@{/detail/{boardID}(boardID=${board6.id})}'|"></div></li>
+                                <li><div class="small_block_list" style="top:1439px;" th:text="${board7.title}" th:onclick="|location.href='@{/detail/{boardID}(boardID=${board7.id})}'|"></div></li>
+                                <li><div class="small_block_list" style="top:1556px;" th:text="${board8.title}" th:onclick="|location.href='@{/detail/{boardID}(boardID=${board8.id})}'|"></div></li>
+                                <li><div class="small_block_list" style="top:1673px;" th:text="${board9.title}" th:onclick="|location.href='@{/detail/{boardID}(boardID=${board9.id})}'|"></div></li>
+                                <li><div class="small_block_list" style="top:1790px;" th:text="${board10.title}" th:onclick="|location.href='@{/detail/{boardID}(boardID=${board10.id})}'|"></div></li>
                             </ul>
                         </div>
                     </td>

@@ -30,7 +30,7 @@
         <div>
             <img class="background" src="triangle.png" alt="triangle">
         </div>
-        <a href="/main1">
+        <a href="/main">
             <div><img class="user" src="account-circle.png"></div>
         </a>
         <!-- 하얀선 -->
@@ -43,7 +43,7 @@
         <!-- 헤더라인 -->
         <div>
             <ul class="row" style="position: fixed;">
-                <li class="menu"><a href="/main1" class="under">HOME</a></li>
+                <li class="menu"><a href="/main" class="under">HOME</a></li>
                 <li class="menu"><a href="/club" class="under">CLUB</a></li>
                 <li class="menu"><a href="/board" class="under">BOARD</a></li>
                 <li class="menu"><a href="/job" class="under">JOB</a></li>
@@ -81,7 +81,6 @@
         <div class="square_btn" OnClick="location.href ='/sellgift'" style="cursor:pointer; position: absolute; width: 145px; height: 48px; left: 583px; top: 672px;">SELL & GIFT</div>
 
         <div class="block_1">
-            <form>
                 <table>            
                 <tr>
                     <!-- 사진 넣는 곳 -->
@@ -103,38 +102,42 @@
                             <div style="position: absolute;  left:50px; top: 50px;">
                                 <img src="account-circle.png" alt="profile" style="height: 45px; width: 45px;">
                             </div>
-                            <div style="position: absolute; font-size: 25px; left: 107px; top: 58px; font-family: 'Courier New', Courier, monospace;">
-                                닉네임
+                            <div style="position: absolute; font-size: 25px; left: 107px; top: 58px; font-family: 'Courier New', Courier, monospace;" id="writer" th:text="${email}">
                             </div>
                             <!-- 제목과 내용 -->
-                            <form id="myForm">
                                 <!-- 제목 -->
-                                <input type="text" id="input1" name="input1" placeholder="NAME" class="input1_c">
+                                <input type="text" id="title" name="input1" placeholder="NAME" class="input1_c">
                                 <br><div class="white_line"></div>
                                 <!-- 내용 -->
-                                <textarea id="input2" placeholder="  Enter detailed information..." class="input2_c"></textarea>
+                                <textarea id="content" placeholder="  Enter detailed information..." class="input2_c"></textarea>
                                 <!-- <input type="text" id="input2" name="input2" placeholder="Enter detailed information..."> -->
                                 <!-- save 버튼 -->
                                 <button type="button" onclick="submitForm()" class="save">Save</button>
-                            </form>
                         </div>
                     </td>
                 </tr>
                 </table>
-            </form>
         </div>
         <script>
             function submitForm() {
-              var form = document.getElementById("myForm");
-              var input1 = document.getElementById("input1").value;
-            //var input2 = document.getElementById("input2").value;
-        
-              // 입력된 값 확인을 위한 출력
-              console.log("첫 번째 입력: " + input1);
-              //console.log("두 번째 입력: " + input2);
-        
-              // 여기에서 폼을 제출하거나 필요한 작업을 수행할 수 있습니다.
-              // form.submit();
+                let title = document.getElementById("title").value;
+                let content = document.getElementById("content").value;
+                let writer = document.getElementById("writer").innerText;
+
+                let data = {title : title, content : content, writer : writer};
+
+                fetch('http://localhost:8080/api/board', {
+                    method : 'POST',
+                    body : JSON.stringify(data),
+                    headers : {
+                        'Content-Type' : 'application/json'
+                    }
+                }).then(response => {
+                    window.location.href = '/board';
+                }).catch(error => {
+                    alert(error)
+                })
+
             }
           </script>
 

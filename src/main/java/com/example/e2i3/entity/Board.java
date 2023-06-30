@@ -50,6 +50,7 @@ public class Board {
 
     public BoardDTO toBoardDTO(){
         return BoardDTO.builder()
+                .id(id)
                 .title(title)
                 .content(content)
                 .writer(writer)

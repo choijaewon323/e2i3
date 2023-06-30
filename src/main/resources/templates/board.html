@@ -14,7 +14,7 @@
         <div>
             <img class="background" src="triangle.png" alt="triangle">
         </div>
-        <a href="/main1">
+        <a href="/main">
             <div><img class="user" src="account-circle.png"></div>
         </a>
         
@@ -27,7 +27,7 @@
         <!-- 헤더라인 -->
         <div>
             <ul class="row" style="position: fixed;">
-                <li class="menu"><a href="/main1" class="under">HOME</a></li>
+                <li class="menu"><a href="/main" class="under">HOME</a></li>
                 <li class="menu"><a href="/club" class="under">CLUB</a></li>
                 <li class="menu"><a href="/board" class="under">BOARD</a></li>
                 <li class="menu"><a href="/job" class="under">JOB</a></li>
@@ -68,14 +68,14 @@
         <!-- 글 목록 -->
         <div class="block_1">
             <ul>
-                <li><div class="block_list" style="top:50px;"></div></li>
-                <li><div class="block_list" style="top:167px;"></div></li>
-                <li><div class="block_list" style="top:284px;"></div></li>
-                <li><div class="block_list" style="top:401px;"></div></li>
-                <li><div class="block_list" style="top:518px;"></div></li>
-                <li><div class="block_list" style="top:635px;"></div></li>
-                <li><div class="block_list" style="top:752px;"></div></li>
-                <li><div class="block_list" style="top:869px;"></div></li>
+                <li><div class="block_list" style="top:50px;" th:text="${board0.title}" th:onclick="|location.href='@{/detail/{boardID}(boardID=${board0.id})}'|"></div></li>
+                <li><div class="block_list" style="top:167px;" th:text="${board1.title}" th:onclick="|location.href='@{/detail/{boardID}(boardID=${board1.id})}'|"></div></li>
+                <li><div class="block_list" style="top:284px;" th:text="${board2.title}" th:onclick="|location.href='@{/detail/{boardID}(boardID=${board2.id})}'|"></div></li>
+                <li><div class="block_list" style="top:401px;" th:text="${board3.title}" th:onclick="|location.href='@{/detail/{boardID}(boardID=${board3.id})}'|"></div></li>
+                <li><div class="block_list" style="top:518px;" th:text="${board4.title}" th:onclick="|location.href='@{/detail/{boardID}(boardID=${board4.id})}'|"></div></li>
+                <li><div class="block_list" style="top:635px;" th:text="${board5.title}" th:onclick="|location.href='@{/detail/{boardID}(boardID=${board5.id})}'|"></div></li>
+                <li><div class="block_list" style="top:752px;" th:text="${board6.title}" th:onclick="|location.href='@{/detail/{boardID}(boardID=${board6.id})}'|"></div></li>
+                <li><div class="block_list" style="top:869px;" th:text="${board7.title}" th:onclick="|location.href='@{/detail/{boardID}(boardID=${board7.id})}'|"></div></li>
 
             </ul>
         </div>
