@@ -73,7 +73,7 @@
                 let password = document.getElementById('password').value;
                 let data = {email : email, password : password};
 
-                fetch('http://localhost:8080/api/login/login', {
+                fetch('http://43.202.11.105:8080/api/login/login', {
                     method : 'POST',
                     body : JSON.stringify(data),
                     headers : {

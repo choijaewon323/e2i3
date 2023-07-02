@@ -64,7 +64,7 @@
 
                 let university = document.getElementById('university').value;
 
-                fetch('http://localhost:8080/api/login/save', {
+                fetch('http://43.202.11.105:8080/api/login/save', {
                     method : 'POST',
                     body : JSON.stringify({ email, password, name, birth, gender, university}),
                     headers : {
