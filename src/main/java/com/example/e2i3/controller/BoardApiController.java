@@ -24,8 +24,8 @@ public class BoardApiController {
     }
 
     @PutMapping("/api/board/{id}")
-    public void updateBoard(@PathVariable Long id) {
-        boardService.update(id);
+    public void updateBoard(@PathVariable Long id, BoardDTO boardDTO) {
+        boardService.update(id, boardDTO);
     }
 
 
@@ -33,7 +33,6 @@ public class BoardApiController {
     public BoardDTO detail(@PathVariable Long id){
         return boardService.findById(id);
     }
-
 
     // board list 1
     @GetMapping("/api/board/list")

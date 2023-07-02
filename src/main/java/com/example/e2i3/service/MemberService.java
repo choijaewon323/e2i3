@@ -1,5 +1,6 @@
 package com.example.e2i3.service;
 
+import com.example.e2i3.dto.MemberDTO;
 import com.example.e2i3.entity.Heart;
 import com.example.e2i3.entity.Member;
 import com.example.e2i3.repository.HeartRepository;
@@ -18,10 +19,9 @@ public class MemberService {
     private final HeartRepository heartRepository;
 
     @Transactional
-    public void update(Long id) {
+    public void update(Long id, MemberDTO memberDTO) {
         Member member = memberRepository.findById(id).orElseThrow();
-
-        member.update(member.toMemberDTO());
+        member.update(memberDTO);
     }
 
     // 삭제

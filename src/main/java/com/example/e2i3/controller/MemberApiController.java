@@ -16,8 +16,8 @@ public class MemberApiController {
     private final MemberService memberService;
     
     @PutMapping("/api/member/{id}")
-    public void updateMember(@PathVariable Long id) {
-        memberService.update(id);
+    public void updateMember(@PathVariable Long id, MemberDTO memberDTO) {
+        memberService.update(id, memberDTO);
     }
 
     @DeleteMapping("/api/member/{id}")
