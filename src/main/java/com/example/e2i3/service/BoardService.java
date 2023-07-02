@@ -86,7 +86,7 @@ public class BoardService {
 
     // board list
     public List<BoardDTO> list() {
-        List<Board>boardList = boardRepository.findAll();
+        List<Board>boardList = boardRepository.findAllByOrderByIdDesc();
         List<BoardDTO>boardDTOList = new ArrayList<>();
 
         // entity to dto list

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8">
+        <link href="sign_inn.css" rel="stylesheet">
+        <title>
+            welcome to our web page!
+        </title>
+    </head>
+    <body>
+        <div class="desktop-5-u19">
+            <div class="auto-group-grb9-LcF">
+                <div type="text" class="auto-rectangle-group">
+
+                    <div><input type="text" placeholder="Enter your Email Address" class="rectangle-18" id="email"></div>
+
+                    <div><input placeholder="Enter Password" class="rectangle-19-yps" type="password" id="password"></div>
+
+                    <div><input placeholder="Name" class="rectangle-20-VHR" type="text" id="name"></div>
+
+                    <div class="auto-group-jpyd-deX">
+                        <div><input type="text" placeholder="YY" class="rectangle-21-aJs" id="yy"></div>
+                        <div><input type="text" placeholder="MM" class="rectangle-22-uc3" id="mm"></div>
+                        <div><input type="text" placeholder="DD" class="rectangle-23-e3q" id="dd"></div>
+                    </div>
+                    <div>
+                        <select class="rectangle-24-Zgb" value="Select Gender" id="gender">
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                    </div>
+                    <div><input type="text" placeholder="University" class="rectangle-25-Hcb" id="university"></div>
+                    <div><input class="rectangle-26-EGw" type="button" id="signup"></div>
+                </div>
+                <p class="email-MJP">Email</p>
+                <p class="enter-your-email-address-WHm"></p>
+                <p class="password-3h1">Password</p>
+                
+                <p class="name-Lw1">Name<p></p>
+                <p class="birth-G3y">Birth</p>
+                <p class="gender-Nsh">Gender</p>
+                <p class="name-of-university-4kX" id>Name of University</p>
+                <p><input class="sign-up-tDm"type="button" value="Sign up"></p>
+                <div class="auto-group-p5yh-QC7"></div>
+            </div>
+            <p class="welcome-6pw">WELCOME</p>
+        </div>
+
+        <script>
+            let signup = document.getElementById('signup');
+
+            signup.addEventListener('click', (event) => {
+                let email = document.getElementById('email').value;
+                let password = document.getElementById('password').value;
+                let name = document.getElementById('name').value;
+                let yy = document.getElementById('yy').value;
+                let mm = document.getElementById('mm').value;
+                let dd = document.getElementById('dd').value;
+
+                let birth = yy + mm + dd;
+
+                let gender = document.getElementById('gender').options[document.getElementById('gender').selectedIndex].value;
+
+                let university = document.getElementById('university').value;
+
+                fetch('http://43.202.11.105:8080/api/login/save', {
+                    method : 'POST',
+                    body : JSON.stringify({ email, password, name, birth, gender, university}),
+                    headers : {
+                        'Content-Type' : 'application/json'
+                    }
+                }).then(response => {
+                    window.location.href = '/login';
+                }).catch(error => {
+                    alert(error)
+                })
+            })
+        </script>
+    </body>
+</html>
+<style>
+    
+    .sign-up-tDm{
+        background-color:  #642af0;
+        border: none;
+        color: white;
+        padding: 15px 30px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 70px;
+        margin: 4px 2px;
+        cursor:pointer;
+        outline: none;
+        border: none;
+        background: transparent;
+    }
+    .rectangle-26-EGw{
+        cursor: pointer;
+        outline: none;
+        border: none;
+        background: transparent;
+    }
+    
+    .rectangle-18{
+        color: black;
+        font-size:70px;
+        font-family: Inter, 'Source Sans Pro';
+        outline: none;
+        border: none;
+        background: transparent;
+        padding-left: 40px;
+    
+    }
+    input::placeholder{
+        color:#c6c6c6
+    }
+    .rectangle-19-yps{
+        color: black;
+        font-size:70px;
+        font-family: Inter, 'Source Sans Pro';
+        outline: none;
+        border: none;
+        background: transparent;
+        padding-left: 40px;
+    }
+
+    .rectangle-20-VHR{
+        color: black;
+        font-size:70px;
+        font-family: Inter, 'Source Sans Pro';
+        outline: none;
+        border: none;
+        background: transparent;
+        padding-left: 40px;
+    }
+    .rectangle-21-aJs{
+        outline: none;
+        border: none;
+        background: transparent;
+        color: black;
+        font-size:70px;
+        font-family: Inter, 'Source Sans Pro';
+        text-align: center;
+    }
+    .rectangle-22-uc3{
+        outline: none;
+        border: none;
+        background: transparent;
+        color: black;
+        font-size:70px;
+        font-family: Inter, 'Source Sans Pro';
+
+        text-align: center;
+    }
+    .rectangle-23-e3q{
+        outline: none;
+        border: none;
+        background: transparent;
+        color: black;
+        font-size:70px;
+        font-family: Inter, 'Source Sans Pro';
+        
+        text-align: center;
+    }
+    
+    .rectangle-24-Zgb{
+        color: black;
+        font-size:70px;
+        font-family: Inter, 'Source Sans Pro';
+        outline: none;
+        border: none;
+        background: transparent;
+        padding-left: 40px;
+        
+    }
+    .rectangle-25-Hcb{
+        outline: none;
+        border: none;
+        background: transparent;
+        color: black;
+        font-size:70px;
+        font-family: Inter, 'Source Sans Pro';
+        padding-left: 40px;
+    }
+    .rectangle-26-EGw {
+        background-color: #642af0;
+        border-radius: 4.1rem;
+        height: 13.1rem;
+        margin-left: 1rem;
+        width: calc(100% - 1rem);
+    }
+    
+
+</style>
+

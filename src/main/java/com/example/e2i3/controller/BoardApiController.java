@@ -13,7 +13,8 @@ public class BoardApiController {
 
     // 글 작성
     @PostMapping("/api/board")
-    public Integer write(BoardDTO boardDTO){
+    public Integer write(@RequestBody BoardDTO boardDTO)
+    {
         return boardService.write(boardDTO);
     }
 

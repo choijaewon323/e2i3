@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>
+            Club
+        </title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="cp.css">
+        
+    </head>
+    <body>
+        <!-- 배경 -->
+        <div>
+            <img class="background" src="triangle.png" alt="triangle">
+        </div>
+        <a href="/main">
+            <div><img class="user" src="account-circle.png"></div>
+        </a>
+        
+        <div>
+            <img class="vector-2-CJX" src="line_1.png" alt="line_1">
+        </div>
+        <div>
+            <img class="vector-3-aCb" src="line_2.png" alt="line_2">
+        </div>
+        <!-- 헤더라인 -->
+        <div>
+            <ul class="row" style="position: fixed;">
+                <li class="menu"><a href="/main" class="under">HOME</a></li>
+                <li class="menu"><a href="/club" class="under">CLUB</a></li>
+                <li class="menu"><a href="/board" class="under">BOARD</a></li>
+                <li class="menu"><a href="/job" class="under">JOB</a></li>
+                <li class="menu" ><a href="/sellgift" class="under">SELL & GIFT</a></li>
+            </ul>
+        </div>
+        
+        <!-- make campus life more fun -->
+        <div class="title" style="position: absolute; left: 152.14px; top: 114.06px;">m</div>
+        <div class="title" style="position: absolute; left: 247.42px; top: 156.06px;">a</div>
+        <div class="title" style="position: absolute; left: 319.04px; top: 130.06px;">k</div>
+        <div class="title" style="position: absolute; left: 396.53px; top: 140.06px;">e</div>
+        <div class="title" style="position: absolute; left: 433.3px; top: 245px;">C</div>
+        <div class="title" style="position: absolute; left: 509.77px; top: 265px;">a</div>
+        <div class="title" style="position: absolute; left: 581.3px; top: 255px;">m</div>
+        <div class="title" style="position: absolute; left: 714.4px; top: 239px;">p</div>
+        <div class="title" style="position: absolute; left: 799.81px; top: 260px;">u</div>
+        <div class="title" style="position: absolute; left: 868.36px; top: 235px;">s</div>
+        <div class="title" style="position: absolute; left: 961.73px; top: 241px;">L</div>
+        <div class="title" style="position: absolute; left: 1029.27px; top: 241px;">i</div>
+        <div class="title" style="position: absolute; left: 1071.97px; top: 241px;">f</div>
+        <div class="title" style="position: absolute; left: 1110.7px; top: 250px;">e</div>
+        <div class="title" style="position: absolute; left: 914.06px; top: 373.06px;">m</div>
+        <div class="title" style="position: absolute; left: 1040.21px; top: 350.06px;">o</div>
+        <div class="title" style="position: absolute; left: 1119.66px; top: 374.06px;">r</div>
+        <div class="title" style="position: absolute; left: 1169.34px; top: 378.06px;">e</div>
+        <div class="title" style="position: absolute; left: 1281.61px; top: 355.06px;">f</div>
+        <div class="title" style="position: absolute; left: 1322.33px; top: 375.06px;">u</div>
+        <div class="title" style="position: absolute; left: 1403.78px; top: 355.06px;">n</div>
+
+        <!-- 선택 버튼 -->
+        <div class="square_btn" OnClick="location.href ='/club'" style="cursor:pointer; position: absolute; width: 145px; height: 48px; left: 127px; top: 672px;">CLUB</div>
+        <div class="click_btn" OnClick="location.href ='/board'" style="cursor:pointer; position: absolute; width: 145px; height: 48px; left: 279px; top: 672px;">BOARD</div>
+        <div class="square_btn" OnClick="location.href ='/job'" style="cursor:pointer; position: absolute; width: 145px; height: 48px; left: 431px; top: 672px;">JOB</div>
+        <div class="square_btn" OnClick="location.href ='/sellgift'" style="cursor:pointer; position: absolute; width: 145px; height: 48px; left: 583px; top: 672px;">SELL & GIFT</div>
+        <div class="write_btn" OnClick="location.href ='/write'" style="cursor:pointer; position: absolute; width: 145px; height: 48px; left: 1383px; top: 672px;">WRITE</div>
+
+        <!-- 글 목록 -->
+        <div class="block_1">
+            <ul>
+                <li><div class="block_list" style="top:50px;" th:text="${board0.title}" th:onclick="|location.href='@{/detail/{boardID}(boardID=${board0.id})}'|"></div></li>
+                <li><div class="block_list" style="top:167px;" th:text="${board1.title}" th:onclick="|location.href='@{/detail/{boardID}(boardID=${board1.id})}'|"></div></li>
+                <li><div class="block_list" style="top:284px;" th:text="${board2.title}" th:onclick="|location.href='@{/detail/{boardID}(boardID=${board2.id})}'|"></div></li>
+                <li><div class="block_list" style="top:401px;" th:text="${board3.title}" th:onclick="|location.href='@{/detail/{boardID}(boardID=${board3.id})}'|"></div></li>
+                <li><div class="block_list" style="top:518px;" th:text="${board4.title}" th:onclick="|location.href='@{/detail/{boardID}(boardID=${board4.id})}'|"></div></li>
+                <li><div class="block_list" style="top:635px;" th:text="${board5.title}" th:onclick="|location.href='@{/detail/{boardID}(boardID=${board5.id})}'|"></div></li>
+                <li><div class="block_list" style="top:752px;" th:text="${board6.title}" th:onclick="|location.href='@{/detail/{boardID}(boardID=${board6.id})}'|"></div></li>
+                <li><div class="block_list" style="top:869px;" th:text="${board7.title}" th:onclick="|location.href='@{/detail/{boardID}(boardID=${board7.id})}'|"></div></li>
+            </ul>
+        </div>
+
+    </body>
+</html>

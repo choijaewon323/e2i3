@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <link href="/login1.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        log in page
+    </title>
+</head>
+
+<body>
+<div class="rectangle">
+    <div class="rectangle1"></div>
+    <a href="/sign_inn" class="gotosignin">Sign In</a>
+    <p class="logo">
+        MAKE
+
+        <br/>
+        CAMPUS LIFE
+
+        <br/>
+        MORE
+
+        <br/>
+        FUN !
+    </p>
+    <img class="talk1" src="talk1.png"/>
+    <img class="talk2" src="talk2.png"/>
+
+        <div class="line2">
+            <p><input class="password" id="password" type="password" placeholder="Password"></p>
+        </div>
+        <div class="line1">
+            <p><input class="email" id="email" type="email" placeholder="Email Address" ></p>
+        </div>
+        <img class="door" src="door.png"/>
+
+        <div>
+            <input type="button" class="button" id="24:179" value="alert">
+            <p class="sign-in" id="save">sign In</p>
+        </div>
+
+
+    <div class="line3"><p class="or">Or Sign In With</p></div>
+    <div class="line4"></div>
+    <form class="flagg">
+        <a href="http://www.google.com" target="_blank"><img input type="button" class="flag" src="미국국기.png" alt="My Image" onclick="location.href='http://www.google.com'"></a>
+        <a href="http://www.google.com" target="_blank"><img input type="button" class="flag" src="중국 국기.png" alt="My Image" onclick="location.href='http://www.google.com'"></a>
+        <a href="http://www.google.com" target="_blank"><img input type="button" class="flag" src="일본국기.png" alt="My Image" onclick="location.href='http://www.google.com'"></a>
+        <a href="http://www.google.com" target="_blank"><img input type="button" class="flag" src="한국국기.png" alt="My Image" onclick="location.href='http://www.google.com'"></a>
+    </form>
+</div>
+    <script>
+            console.log(document);
+    
+            function signinFunc(){
+                if(userid.value == "polytech" && userpw.value =="123456") {
+                    window.open('sign_inn.html');
+                    }
+                    else{
+                        alert("Error UserID or Password");
+                    }
+                }   
+    </script>
+
+<script>
+        let save = document.getElementById('save');
+
+        if (save != null) {
+            save.addEventListener('click', (event) => {
+                let email = document.getElementById('email').value;
+                let password = document.getElementById('password').value;
+                let data = {email : email, password : password};
+
+                fetch('http://43.202.11.105:8080/api/login/login', {
+                    method : 'POST',
+                    body : JSON.stringify(data),
+                    headers : {
+                        'Content-Type' : 'application/json'
+                    }
+                }).then(response => response.json()
+                ).then(data => {
+                    if (data == 0)
+                        alert('login failed')
+                    else
+                        window.location.href = '/main'
+                }).catch(error => {
+                    console.error('네트워크 오류:', error);
+                })
+            })
+        }
+
+</script>
+</body>
+
+</html>
