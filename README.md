@@ -2,8 +2,8 @@
 네터스 23-1 팀 프로젝트 백엔드 개발
 
 ## Skill
-- Back-end : Spring Boot, Spring Security, Spring Data JPA
-- DevOps : MySQL, H2Databases
+- Back-end : Spring Boot, Spring Data JPA
+- DevOps : H2Databases
 - Build : Gradle
 - Deployment : AWS
 
